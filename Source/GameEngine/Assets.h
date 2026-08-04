@@ -1,9 +1,10 @@
 #pragma once
 
 #include "Model.h"
+#include <memory>
 
 namespace Assets {
-	extern bad::Model playerModel;
-	extern bad::Model bulletModel;
-	extern bad::Model enemyModel;
+	extern std::shared_ptr<bad::Model> playerModel;
+	extern std::shared_ptr<bad::Model> bulletModel;
+	extern std::shared_ptr<bad::Model> enemyModel;
 }

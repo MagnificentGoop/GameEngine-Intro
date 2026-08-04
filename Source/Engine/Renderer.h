@@ -57,6 +57,8 @@ namespace bad
 
 			void DrawModel(const Model& model, const Transform2D& transform) const;
 
+			void DrawTexture(class Texture* texture, float x, float y);
+
 			void Render();
 			void DestroyRenderer();
 			void DistroyWindow();
@@ -64,6 +66,8 @@ namespace bad
 
 	private:
 		friend class Text;
+		friend class Texture;
+
 		private:
 			SDL_Window* m_window = nullptr;
 			SDL_Renderer* m_renderer = nullptr;

@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)ThirdParty\SDL3\lib\$(PlatformTarget)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -97,7 +97,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)ThirdParty\SDL3\lib\$(PlatformTarget)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -115,7 +115,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\NeumontClasses\Q4\CSC196 - C++ 2\GameEngine\Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc;%(AdditionalIncludeDirectories);$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\NeumontClasses\Q4\CSC196 - C++ 2\GameEngine\Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc;%(AdditionalIncludeDirectories);$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)ThirdParty\SDL3\lib\$(PlatformTarget)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -138,7 +138,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)/Source/Engine;$(SolutionDir)/Source/ThirdParty/SDL3/include;$(SolutionDir)/Source/ThirdParty/fmod/core/inc;$(SolutionDir)ThirdParty\SDL3\lib\$(PlatformTarget)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -165,6 +165,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Audio.h" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Transform2D.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />

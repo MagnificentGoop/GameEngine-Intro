@@ -3,6 +3,7 @@
 #include "Model.h"
 #include "Renderer.h"
 #include <string>
+#include <memory>
 
 namespace bad {
 	class Scene;
@@ -11,7 +12,7 @@ namespace bad {
 		std::string name = "NONE";
 		std::vector<std::string> tags;
 		Transform2D transform = { {0,0},0, {1,1} };
-		Model model;
+		std::shared_ptr<Model> model;
 		float lifespan = -1;
 	};
 	class SceneObject {
@@ -43,6 +44,8 @@ namespace bad {
 		const std::vector<std::string>& GetTags() const { return m_tags; }
 		const void AddTag(const std::string s) { m_tags.push_back(s); }
 
+		void SetModel(std::shared_ptr<Model> model) { m_model = model; }
+
 		float GetRadius() const;
 		virtual void OnCollision(SceneObject* other) {};
 
@@ -54,7 +57,7 @@ namespace bad {
 		std::string m_name = "Default";
 		std::vector<std::string> m_tags;
 		Transform2D m_transform;
-		Model m_model;
+		std::shared_ptr<Model> m_model;
 
 		Scene* m_scene = nullptr;
 		bool m_distroyed = false;

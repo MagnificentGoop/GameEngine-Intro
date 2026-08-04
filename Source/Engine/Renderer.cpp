@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Renderer.h"
 #include "MathUtils.h"
+#include "Texture.h"
 
 namespace bad
 {
@@ -127,6 +128,18 @@ namespace bad
         }
     }
 
+    void Renderer::DrawTexture(Texture* texture, float x, float y)
+    {
+        Vector2<float> size = texture->GetSize();
+
+        SDL_FRect destRect;
+        destRect.x = x;
+        destRect.y = y;
+        destRect.w = size.x;
+        destRect.h = size.y;
+
+        SDL_RenderTexture(m_renderer, texture->m_texture, NULL, &destRect);
+    }
 
     void Renderer::Render() {
 		SDL_RenderPresent(m_renderer);

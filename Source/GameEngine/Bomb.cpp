@@ -1,5 +1,6 @@
 #include "Bomb.h"
 #include <iostream>
+#include <memory>
 
 void Bomb::Update(){
 	if (m_lifespan <= 0) {
