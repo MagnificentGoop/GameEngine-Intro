@@ -57,7 +57,8 @@ namespace bad
 
 			void DrawModel(const Model& model, const Transform2D& transform) const;
 
-			void DrawTexture(class Texture* texture, float x, float y);
+			void DrawTexture(const class Texture& texture, float x, float y);
+			void DrawTexture(const class Texture& texture, float x, float y, float angle, const Vector2<float>& scale = {1.0f, 1.0f}, bool flipH = false);
 
 			void Render();
 			void DestroyRenderer();

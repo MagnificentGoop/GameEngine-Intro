@@ -20,7 +20,7 @@ namespace bad {
 	class Text {
 	public:
 		Text() = default;
-		Text(Font* font) : m_font{ font } {}
+		Text(res_t<Font> font) : m_font{ font } {}
 		~Text();
 
 		bool Create(const std::string& text, const Color8& color);
@@ -32,7 +32,7 @@ namespace bad {
 		VOrigin GetVerticalOrigin() { return m_vOrigin; }
 
 	private:
-		Font* m_font{ nullptr };
+		res_t<Font> m_font{ nullptr };
 		SDL_Texture* m_texture{ nullptr };
 		HOrigin m_hOrigin = HOrigin::Left;
 		VOrigin m_vOrigin = VOrigin::Top;

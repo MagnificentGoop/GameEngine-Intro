@@ -128,9 +128,9 @@ namespace bad
         }
     }
 
-    void Renderer::DrawTexture(Texture* texture, float x, float y)
+    void Renderer::DrawTexture(const Texture& texture, float x, float y)
     {
-        Vector2<float> size = texture->GetSize();
+        Vector2<float> size = texture.GetSize();
 
         SDL_FRect destRect;
         destRect.x = x;
@@ -138,7 +138,18 @@ namespace bad
         destRect.w = size.x;
         destRect.h = size.y;
 
-        SDL_RenderTexture(m_renderer, texture->m_texture, NULL, &destRect);
+        SDL_RenderTexture(m_renderer, texture.m_texture, NULL, &destRect);
+    }
+    void Renderer::DrawTexture(const Texture& texture, float x, float y, float angle, const Vector2<float>& scale, bool flipH) {
+        Vector2<float> size = texture.GetSize();
+
+        SDL_FRect destRect;
+        destRect.x = x;
+        destRect.y = y;
+        destRect.w = size.x * scale.x;
+        destRect.h = size.y * scale.y;
+
+        SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, angle, NULL, flipH ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 
     void Renderer::Render() {

@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Text.h"
 #include "Font.h"
+#include "ResourceManager.h"
 
 class SpaceGame : public bad::Game {
 public:
@@ -32,17 +33,24 @@ private:
 
 	int m_score = 0;
 	int m_lives = 0;
-	bad::Font* m_titleFont = nullptr;
+
+	bad::res_t<bad::Font> m_titleFont;
+	bad::res_t<bad::Font> m_gameFont;
+	bad::res_t<bad::Font> m_gameOverFont;
+
+	//bad::Font* m_titleFont = nullptr;
 	bad::Text* m_titleText = nullptr;
 
-	bad::Font* m_gameOverFont = nullptr;
+	//bad::Font* m_gameOverFont = nullptr;
 	bad::Text* m_gameOverText = nullptr;
 
-	bad::Font* m_gameFont = nullptr;
+	//bad::Font* m_gameFont = nullptr;
 
 	bad::Text* m_scoreText = nullptr;
 
 	bad::Text* m_livesText = nullptr;
 
 	GameState m_gameState = GameState::Title;
+
+	std::shared_ptr<bad::Texture> m_texture;
 };

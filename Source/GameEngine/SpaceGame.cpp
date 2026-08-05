@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Assets.h"
+#include <memory>
 
 bool SpaceGame::Initialize()
 {
@@ -11,13 +12,13 @@ bool SpaceGame::Initialize()
     m_scene = new bad::Scene();
     m_scene->SetGame(this);
 
-    m_titleFont = new bad::Font();
+    m_titleFont = std::make_shared<bad::Font>();
     m_titleFont->Load("Assets/Fonts/font.ttf", 64);
 
     m_titleText = new bad::Text(m_titleFont);
     m_titleText->Create("AHHHH..", bad::Color8{ 255, 255, 255 });
 
-    m_gameFont = new bad::Font();
+    m_gameFont = std::make_shared<bad::Font>();
     m_gameFont->Load("Assets/Fonts/font.ttf", 32);
 
     m_scoreText = new bad::Text(m_gameFont);
@@ -28,6 +29,11 @@ bool SpaceGame::Initialize()
     bad::g_audio.AddSound("bullet", "Assets/Sounds/bullet_lazer.mp3");
     bad::g_audio.AddSound("bomb", "Assets/Sounds/bomb_lazer.mp3");
     bad::g_audio.AddSound("boom", "Assets/Sounds/boom.mp3");
+
+    // create texture, using shared_ptr so texture can be shared
+    std::shared_ptr<bad::Texture> texture = std::make_shared<bad::Texture>();
+    texture->Load("Assets/Images/Image.jpg");
+    m_texture = texture;
 
     return true;
 }
@@ -108,6 +114,9 @@ void SpaceGame::Draw()
     default:
         break;
     }
+
+    bad::Engine::Get().GetRenderer().DrawTexture(*m_texture.get(), 30, 30);
+
 
     Game::Draw();
 }

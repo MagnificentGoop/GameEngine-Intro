@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
+#include "Resource.h"
 
 struct TTF_Font;
 
 namespace bad {
-	class Font {
+	class Font : public Resource {
 	public:
 		Font() = default;
 		~Font();

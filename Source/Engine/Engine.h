@@ -10,6 +10,7 @@
 #include "Random.h"
 #include "Text.h"
 #include "ParticleSystem.h"
+#include "Texture.h"
 
 #include <iostream>
 
