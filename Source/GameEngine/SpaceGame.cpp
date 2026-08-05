@@ -60,9 +60,6 @@ void SpaceGame::Update()
             else m_spawnTimer = bad::RandomFloat(1.0,10.0f - (m_score/180));
             SpawnEnemy();
         }
-
-        
-
         break;
     case GameState::Dead:
         m_stateTimer -= bad::g_time.GetDeltaTime();
@@ -110,9 +107,7 @@ void SpaceGame::Draw()
         break;
     }
 
-    auto texture = bad::Resources().Get<bad::Texture>("Assets/Images/Image.jpg", bad::Engine::Get().GetRenderer());
-    bad::Engine::Get().GetRenderer().DrawTexture(*texture, 30, 30, 23.0f, 2.0f);
-
+    bad::Engine::Get().GetRenderer().DrawTexture(*bad::Resources().GetWithID<bad::Texture>("lose it lose it", "Assets/Images/Image.jpg"), 30.0f, 30.0f);
 
     Game::Draw();
 }
