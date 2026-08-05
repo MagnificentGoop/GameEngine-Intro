@@ -2,6 +2,7 @@
 #include "Resource.h"
 #include <string>
 #include <map>
+#include <iostream>
 #include "Singleton.h"
 
 namespace bad
@@ -59,7 +60,7 @@ namespace bad
 
 		// load resource
 		res_t<T> resource = std::make_shared<T>();
-		if (resource->Load(name, std::forward<Args>(args)...) == false)
+		if (resource->Load(name/*, std::forward<Args>(args)...*/ ) == false)
 		{
 			std::cerr << "Could not load resource: " << name << std::endl;
 			return res_t<T>();

@@ -2,10 +2,11 @@
 #include <fmod.hpp>
 #include <string>
 #include <map>
+#include "Resource.h"
 
 namespace bad
 {
-	class Audio
+	class Audio : public Resource
 	{
 	public:
 		Audio() = default;

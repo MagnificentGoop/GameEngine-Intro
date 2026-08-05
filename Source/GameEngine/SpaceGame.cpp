@@ -30,11 +30,6 @@ bool SpaceGame::Initialize()
     bad::g_audio.AddSound("bomb", "Assets/Sounds/bomb_lazer.mp3");
     bad::g_audio.AddSound("boom", "Assets/Sounds/boom.mp3");
 
-    // create texture, using shared_ptr so texture can be shared
-    std::shared_ptr<bad::Texture> texture = std::make_shared<bad::Texture>();
-    texture->Load("Assets/Images/Image.jpg");
-    m_texture = texture;
-
     return true;
 }
 
@@ -115,7 +110,8 @@ void SpaceGame::Draw()
         break;
     }
 
-    bad::Engine::Get().GetRenderer().DrawTexture(*m_texture.get(), 30, 30);
+    auto texture = bad::Resources().Get<bad::Texture>("Assets/Images/Image.jpg", bad::Engine::Get().GetRenderer());
+    bad::Engine::Get().GetRenderer().DrawTexture(*texture, 30, 30, 23.0f, 2.0f);
 
 
     Game::Draw();
