@@ -17,7 +17,7 @@ namespace bad {
 		Middle,
 		Bottom
 	};
-	class Text {
+	class Text : public Resource{
 	public:
 		Text() = default;
 		Text(res_t<Font> font) : m_font{ font } {}
