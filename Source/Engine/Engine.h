@@ -16,7 +16,7 @@
 #include <iostream>
 
 namespace bad{
-	class Engine {
+	class Engine{
 	public:
 		static Engine& Get() { static Engine engine; return engine; }
 

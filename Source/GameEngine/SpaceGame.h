@@ -34,15 +34,11 @@ private:
 	int m_score = 0;
 	int m_lives = 0;
 
-	bad::res_t<bad::Font> m_titleFont;
-	bad::res_t<bad::Font> m_gameFont;
-	bad::res_t<bad::Font> m_gameOverFont;
-
 	//bad::Font* m_titleFont = nullptr;
-	bad::Text* m_titleText = nullptr;
+	bad::res_t<bad::Text> m_titleText;
 
 	//bad::Font* m_gameOverFont = nullptr;
-	bad::Text* m_gameOverText = nullptr;
+	bad::res_t<bad::Text> m_gameOverText;
 
 	//bad::Font* m_gameFont = nullptr;
 

@@ -32,7 +32,7 @@ namespace bad {
 		VOrigin GetVerticalOrigin() { return m_vOrigin; }
 
 	private:
-		res_t<Font> m_font{ nullptr };
+		res_t<Font> m_font;
 		SDL_Texture* m_texture{ nullptr };
 		HOrigin m_hOrigin = HOrigin::Left;
 		VOrigin m_vOrigin = VOrigin::Top;
