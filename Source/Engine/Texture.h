@@ -18,6 +18,7 @@ namespace bad {
 		const Vector2<float>& GetSize() const { return m_size; }
 
 		void SetScale(const Vector2<float>& scale) { m_scale = scale; }
+		float GetRadius() { return (m_size / 2).Length() * ((m_scale.x * m_scale.y) / 2); }
 
 		friend class Renderer;
 

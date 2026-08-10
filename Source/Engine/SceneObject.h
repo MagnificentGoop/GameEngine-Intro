@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include <string>
 #include <memory>
+#include "ResourceManager.h"
 
 namespace bad {
 	class Scene;
@@ -13,6 +14,7 @@ namespace bad {
 		std::vector<std::string> tags;
 		Transform2D transform = { {0,0},0, {1,1} };
 		std::shared_ptr<Model> model;
+		res_t<bad::Texture> texture;
 		float lifespan = -1;
 	};
 	class SceneObject {
@@ -23,6 +25,7 @@ namespace bad {
 			m_tags{ a.tags },
 			m_transform{ a.transform },
 			m_model{ a.model },
+			m_texture{a.texture},
 			m_lifespan{ a.lifespan } {};
 
 		virtual void Update();
@@ -58,6 +61,7 @@ namespace bad {
 		std::vector<std::string> m_tags;
 		Transform2D m_transform;
 		std::shared_ptr<Model> m_model;
+		res_t<bad::Texture> m_texture;
 
 		Scene* m_scene = nullptr;
 		bool m_distroyed = false;

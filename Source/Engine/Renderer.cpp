@@ -151,6 +151,18 @@ namespace bad
 
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, angle, NULL, flipH ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
+    void Renderer::DrawTexture(const Texture& texture, const Transform2D& transform, bool flipH) {
+        Vector2<float> size = texture.GetSize();
+
+        SDL_FRect destRect;
+        destRect.w = size.x * transform.scale.x;
+        destRect.h = size.y * transform.scale.y;
+
+        destRect.x = transform.position.x - (destRect.w / 2);
+        destRect.y = transform.position.y - (destRect.h / 2);
+
+        SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, transform.rotation, NULL, flipH ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+    }
 
     void Renderer::Render() {
 		SDL_RenderPresent(m_renderer);

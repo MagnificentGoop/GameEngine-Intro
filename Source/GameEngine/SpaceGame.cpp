@@ -18,6 +18,9 @@ bool SpaceGame::Initialize()
     m_scoreText = new bad::Text(bad::Resources().SetWithID<bad::Font>("font32", "Assets/Fonts/font.ttf", 32));
     m_livesText = new bad::Text(bad::Resources().GetWithID<bad::Font>("font32"));
 
+    bad::Resources().SetWithID<bad::Texture>("player", "Assets/Images/Player.png");
+    bad::Resources().SetWithID<bad::Texture>("enemy", "Assets/Images/Enemy.png");
+
     bad::g_audio.Initialize();
     bad::g_audio.AddSound("scream", "Assets/Sounds/scream.mp3");
     bad::g_audio.AddSound("bullet", "Assets/Sounds/bullet_lazer.mp3");
@@ -101,8 +104,6 @@ void SpaceGame::Draw()
         break;
     }
 
-    bad::Engine::Get().GetRenderer().DrawTexture(*bad::Resources().SetWithID<bad::Texture>("lose it lose it", "Assets/Images/Image.jpg"), 30.0f, 30.0f);
-
     Game::Draw();
 }
 
@@ -117,10 +118,10 @@ void SpaceGame::OnPlayerDead(){
 
 void SpaceGame::SpawnPlayer(){
     PlayerDesc p;
-    p.actorDesc.sceneObject.model = Assets::playerModel;
+    p.actorDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("player");
     p.actorDesc.sceneObject.name = "Player";
     p.actorDesc.speed = 1000.0f;
-    p.actorDesc.sceneObject.transform = { {bad::Engine::Get().GetRenderer().GetWidth() / 2,bad::Engine::Get().GetRenderer().GetHeight() / 2},0,{5,5} };
+    p.actorDesc.sceneObject.transform = { {bad::Engine::Get().GetRenderer().GetWidth() / 2,bad::Engine::Get().GetRenderer().GetHeight() / 2},0,{2.3,2.3} };
     Player* player = new Player{ p };
 
     m_scene->AddSceneObject(player);
@@ -128,10 +129,10 @@ void SpaceGame::SpawnPlayer(){
 
 void SpaceGame::SpawnEnemy(){
     EnemyDesc e;
-    e.enemyDesc.sceneObject.model = Assets::enemyModel;
     e.enemyDesc.sceneObject.name = "Enemy";
+    e.enemyDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("enemy");
     e.enemyDesc.speed = 500.0f;
-    e.enemyDesc.sceneObject.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {4,4} };
+    e.enemyDesc.sceneObject.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {2,2} };
     Enemy* enemy = new Enemy{ e };
     enemy->AddTag("Death");
     m_scene->AddSceneObject(enemy);

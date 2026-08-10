@@ -1,8 +1,24 @@
 #include "Engine.h"
 #include "SpaceGame.h"
+#include <fstream>
 
 int main()
 {
+
+    {
+        //read file (input file)
+        std::ifstream file("Assets/Data/txt.txt");
+        if (file.is_open()) {
+            std::string str;
+            std::getline(file, str);
+            std::cout << str << std::endl;
+        }
+        else {
+            std::cout << "crine" << std::endl;
+        }
+    }
+    //return 0;
+
     //INITIALIZATION/*
     if (!bad::Engine::Get().Initialize()) return 1;
     SpaceGame game;

@@ -16,12 +16,17 @@ void bad::SceneObject::Update(){
 }
 
 void bad::SceneObject::Draw() const{
-	if (m_model) {
+	if (!m_texture && m_model) {
 		Engine::Get().GetRenderer().DrawModel(*m_model, m_transform);
+	}
+	if (m_texture) {
+		Engine::Get().GetRenderer().DrawTexture(*m_texture, m_transform);
 	}
 }
 
 float bad::SceneObject::GetRadius() const
 {
-	return m_model->GetRadius() * ((m_transform.scale.x + m_transform.scale.y) / 2) * 0.95f;
+	if (!m_texture && m_model) return m_model->GetRadius() * ((m_transform.scale.x + m_transform.scale.y) / 2) * 0.95f;
+	else if (m_texture) return m_texture->GetRadius() * ((m_transform.scale.x + m_transform.scale.y) / 2) * 0.95f;
+	else return 0;
 }
