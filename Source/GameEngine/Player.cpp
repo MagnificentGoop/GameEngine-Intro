@@ -19,8 +19,8 @@ void Player::Update() {
         bad::Vector2<float> forward{ 1,0 };
         desc.bulletDesc.sceneObject.name = "Bullet";
         desc.bulletDesc.sceneObject.tags.push_back("PlayerBullet");
-        desc.bulletDesc.sceneObject.model = Assets::bulletModel;
-        desc.bulletDesc.sceneObject.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {1,1} };
+        desc.bulletDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("bullet");
+        desc.bulletDesc.sceneObject.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
         desc.bulletDesc.velocity = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed;
         desc.bulletDesc.sceneObject.lifespan = 5;
         desc.bulletDesc.speed = 1000;
@@ -37,8 +37,8 @@ void Player::Update() {
 
         desc.bulletDesc.bulletDesc.sceneObject.name = "Bomb";
         desc.bulletDesc.bulletDesc.sceneObject.tags.push_back("PlayerBomb");
-        desc.bulletDesc.bulletDesc.sceneObject.model = Assets::bulletModel;
-        desc.bulletDesc.bulletDesc.sceneObject.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {1,1} };
+        desc.bulletDesc.bulletDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("shrapnel");
+        desc.bulletDesc.bulletDesc.sceneObject.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
         desc.bulletDesc.bulletDesc.sceneObject.lifespan = 1;
         desc.bulletDesc.bulletDesc.speed = 1000;
         desc.bulletDesc.bulletDesc.velocity = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed / 2;

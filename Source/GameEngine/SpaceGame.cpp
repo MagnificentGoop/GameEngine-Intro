@@ -20,6 +20,8 @@ bool SpaceGame::Initialize()
 
     bad::Resources().SetWithID<bad::Texture>("player", "Assets/Images/Player.png");
     bad::Resources().SetWithID<bad::Texture>("enemy", "Assets/Images/Enemy.png");
+    bad::Resources().SetWithID<bad::Texture>("bullet", "Assets/Images/Bullet.png");
+    bad::Resources().SetWithID<bad::Texture>("shrapnel", "Assets/Images/Shrapnel.png");
 
     bad::g_audio.Initialize();
     bad::g_audio.AddSound("scream", "Assets/Sounds/scream.mp3");
