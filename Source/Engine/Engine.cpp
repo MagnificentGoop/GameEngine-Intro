@@ -15,6 +15,7 @@ namespace bad {
 		return true;
 	}
 	void Engine::Shutdown(){
+		Resources().RemoveAll();
 		m_particleSystem.Shutdown();
 		g_audio.Shutdown();
 		m_renderer.Quit();

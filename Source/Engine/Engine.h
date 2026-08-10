@@ -12,6 +12,8 @@
 #include "ParticleSystem.h"
 #include "Texture.h"
 #include "ResourceManager.h"
+#include "Json.h"
+#include "File.h"
 
 #include <iostream>
 
