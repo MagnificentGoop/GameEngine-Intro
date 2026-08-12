@@ -3,16 +3,16 @@
 #include "Engine.h"
 #include <iostream>
 struct BulletDesc {
-	bad::ActorDesc bulletDesc;
+	ActorDesc bulletDesc;
 };
 
-class Bullet : public bad::Actor {
+class Bullet : public Actor {
 public:
 	Bullet() = default;
 	Bullet(const BulletDesc& p) : Actor(p.bulletDesc) { m_startingTime = bad::g_time.GetTime(); }
-	Bullet(const bad::ActorDesc& a) : Actor(a) { m_startingTime = bad::g_time.GetTime(); }
+	Bullet(const ActorDesc& a) : Actor(a) { m_startingTime = bad::g_time.GetTime(); }
 
-	virtual void Update();
+	virtual void Update() override;
 private:
 	float m_startingTime;
 };

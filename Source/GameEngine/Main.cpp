@@ -28,10 +28,10 @@ int main()
     std::cout << position.x << " " << position.y << std::endl;
     std::cout << color.x << " " << color.y << " " << color.z << " " << std::endl;
 
-    bad::Factory::Instance().Register<bad::Actor>("Actor");
+    bad::Factory::Instance().Register<Actor>("Actor");
     bad::Factory::Instance().Register<bad::Object>("Object");
 
-    auto actor = bad::Factory::Instance().Create<bad::Actor>("Actor");
+    auto actor = bad::Factory::Instance().Create<Actor>("Actor");
     std::cout << actor->GetActive() << std::endl;
 
     auto object = bad::Factory::Instance().Create("Object");

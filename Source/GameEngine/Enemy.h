@@ -2,16 +2,16 @@
 #include "Actor.h"
 
 struct EnemyDesc {
-	bad::ActorDesc enemyDesc;
+	ActorDesc enemyDesc;
 };
-class Enemy : public bad::Actor {
+class Enemy : public Actor {
 public:
 	Enemy() = default;
 	Enemy(const EnemyDesc& p) : Actor(p.enemyDesc) {};
-	Enemy(const bad::ActorDesc& a) : Actor(a) {};
+	Enemy(const ActorDesc& a) : Actor(a) {};
 
-	void Update();
+	void Update() override;
 
-	void OnCollision(Object* other) override;
+	void OnCollision(bad::Object* other) override;
 private:
 };

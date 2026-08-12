@@ -14,8 +14,8 @@ public:
 	Bomb() = default;
 	Bomb(const BombDesc& b) : Bullet(b.bulletDesc)  { m_shrapnelAmount=b.shrapnelAmount; }
 
-	void Update();
-	void OnCollision(Object* other);
+	void Update() override;
+	void OnCollision(bad::Object* other) override;
 private:
 	void EXPLOOD();
 	int m_shrapnelAmount;

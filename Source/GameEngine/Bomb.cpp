@@ -32,7 +32,7 @@ void Bomb::EXPLOOD(){
 	}
 }
 
-void Bomb::OnCollision(Object* other)
+void Bomb::OnCollision(bad::Object* other)
 {
     for (int i = 0; i < other->GetTags().size(); i++)
     {
