@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Scene.h"
-#include "SceneObject.h"
+#include "Object.h"
 #include "Engine.h"
 #include <iostream>
 
@@ -15,13 +15,13 @@ namespace bad {
 
 	void Scene::Update() {
 		bad::Engine::Get().Update();
-		for (SceneObject* object : m_objects)
+		for (Object* object : m_objects)
 		{
 			object->Update();
 		}
 		UpdateCollisions();
 		//remove destroyed actors
-		std::erase_if(m_objects, [](auto sceneObject) {return sceneObject->m_distroyed;});
+		std::erase_if(m_objects, [](auto Object) {return !Object->m_active;});
 		
 
 		//insert new actors
@@ -31,7 +31,7 @@ namespace bad {
 	}
 
 	void Scene::Draw() {
-		for (SceneObject* object : m_objects) {
+		for (Object* object : m_objects) {
 			object->Draw();
 		}
 		Engine::Get().GetRenderer().Render();
@@ -41,7 +41,7 @@ namespace bad {
 	{
 		for (auto& actorA : m_objects) {
 			for (auto& actorB : m_objects) {
-				if (actorA == actorB || actorA->m_distroyed || actorB->m_distroyed) continue;
+				if (actorA == actorB || !actorA->m_active || !actorB->m_active) continue;
 
 				float distance = (actorA->GetTransform().position - actorB->GetTransform().position).Length();
 				if (distance <= actorA->GetRadius() + actorB->GetRadius()) {

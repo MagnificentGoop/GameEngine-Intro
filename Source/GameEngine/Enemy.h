@@ -12,6 +12,6 @@ public:
 
 	void Update();
 
-	void OnCollision(SceneObject* other) override;
+	void OnCollision(Object* other) override;
 private:
 };

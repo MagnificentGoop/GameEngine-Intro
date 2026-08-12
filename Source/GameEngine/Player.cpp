@@ -17,16 +17,16 @@ void Player::Update() {
     if (bad::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_F)) {
         BulletDesc desc;
         bad::Vector2<float> forward{ 1,0 };
-        desc.bulletDesc.sceneObject.name = "Bullet";
-        desc.bulletDesc.sceneObject.tags.push_back("PlayerBullet");
-        desc.bulletDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("bullet");
-        desc.bulletDesc.sceneObject.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
+        desc.bulletDesc.Object.name = "Bullet";
+        desc.bulletDesc.Object.tags.push_back("PlayerBullet");
+        desc.bulletDesc.Object.texture = bad::Resources().GetWithID<bad::Texture>("bullet");
+        desc.bulletDesc.Object.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
         desc.bulletDesc.velocity = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed;
-        desc.bulletDesc.sceneObject.lifespan = 5;
+        desc.bulletDesc.Object.lifespan = 5;
         desc.bulletDesc.speed = 1000;
         desc.bulletDesc.drag = 1.0f;
 
-        m_scene->AddSceneObject(new Bullet(desc));
+        m_scene->AddObject(new Bullet(desc));
         ((SpaceGame*)m_scene->GetGame())->AddPoints(1);
         bad::g_audio.PlaySound("bullet");
 
@@ -35,17 +35,17 @@ void Player::Update() {
         BombDesc desc;
         bad::Vector2<float> forward{ 1,0 };
 
-        desc.bulletDesc.bulletDesc.sceneObject.name = "Bomb";
-        desc.bulletDesc.bulletDesc.sceneObject.tags.push_back("PlayerBomb");
-        desc.bulletDesc.bulletDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("shrapnel");
-        desc.bulletDesc.bulletDesc.sceneObject.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
-        desc.bulletDesc.bulletDesc.sceneObject.lifespan = 1;
+        desc.bulletDesc.bulletDesc.Object.name = "Bomb";
+        desc.bulletDesc.bulletDesc.Object.tags.push_back("PlayerBomb");
+        desc.bulletDesc.bulletDesc.Object.texture = bad::Resources().GetWithID<bad::Texture>("shrapnel");
+        desc.bulletDesc.bulletDesc.Object.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
+        desc.bulletDesc.bulletDesc.Object.lifespan = 1;
         desc.bulletDesc.bulletDesc.speed = 1000;
         desc.bulletDesc.bulletDesc.velocity = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed / 2;
         desc.bulletDesc.bulletDesc.drag = 0.16f;
         desc.shrapnelAmount = 20;
 
-        m_scene->AddSceneObject(new Bomb(desc));
+        m_scene->AddObject(new Bomb(desc));
         ((SpaceGame*)m_scene->GetGame())->AddPoints(5);
 
         bad::g_audio.PlaySound("bomb");
@@ -54,14 +54,14 @@ void Player::Update() {
     Actor::Update();
 }
 
-void Player::OnCollision(SceneObject* other)
+void Player::OnCollision(Object* other)
 {
     for (int i = 0; i < other->GetTags().size(); i++)
     {
         if (other->GetTags().at(i) == "Death") { 
             bad::g_audio.PlaySound("scream");
-            m_distroyed = true; 
-            other->SetDistroyed(); 
+            m_active = false;
+            other->SetActive(); 
             ((SpaceGame*)m_scene->GetGame())->OnPlayerDead();
         }
     }

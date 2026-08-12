@@ -120,22 +120,22 @@ void SpaceGame::OnPlayerDead(){
 
 void SpaceGame::SpawnPlayer(){
     PlayerDesc p;
-    p.actorDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("player");
-    p.actorDesc.sceneObject.name = "Player";
+    p.actorDesc.Object.texture = bad::Resources().GetWithID<bad::Texture>("player");
+    p.actorDesc.Object.name = "Player";
     p.actorDesc.speed = 1000.0f;
-    p.actorDesc.sceneObject.transform = { {bad::Engine::Get().GetRenderer().GetWidth() / 2,bad::Engine::Get().GetRenderer().GetHeight() / 2},0,{2.3,2.3} };
+    p.actorDesc.Object.transform = { {bad::Engine::Get().GetRenderer().GetWidth() / 2,bad::Engine::Get().GetRenderer().GetHeight() / 2},0,{2.3,2.3} };
     Player* player = new Player{ p };
 
-    m_scene->AddSceneObject(player);
+    m_scene->AddObject(player);
 }
 
 void SpaceGame::SpawnEnemy(){
     EnemyDesc e;
-    e.enemyDesc.sceneObject.name = "Enemy";
-    e.enemyDesc.sceneObject.texture = bad::Resources().GetWithID<bad::Texture>("enemy");
+    e.enemyDesc.Object.name = "Enemy";
+    e.enemyDesc.Object.texture = bad::Resources().GetWithID<bad::Texture>("enemy");
     e.enemyDesc.speed = 500.0f;
-    e.enemyDesc.sceneObject.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {2,2} };
+    e.enemyDesc.Object.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {2,2} };
     Enemy* enemy = new Enemy{ e };
     enemy->AddTag("Death");
-    m_scene->AddSceneObject(enemy);
+    m_scene->AddObject(enemy);
 }

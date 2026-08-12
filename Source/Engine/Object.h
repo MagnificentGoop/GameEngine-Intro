@@ -5,11 +5,12 @@
 #include <string>
 #include <memory>
 #include "ResourceManager.h"
+#include "Json.h"
 
 namespace bad {
 	class Scene;
 
-	struct SceneObjectDesc {
+	struct ObjectDesc {
 		std::string name = "NONE";
 		std::vector<std::string> tags;
 		Transform2D transform = { {0,0},0, {1,1} };
@@ -17,10 +18,10 @@ namespace bad {
 		res_t<bad::Texture> texture;
 		float lifespan = -1;
 	};
-	class SceneObject {
+	class Object {
 	public:
-		SceneObject() = default;
-		SceneObject(const SceneObjectDesc& a) :
+		Object() = default;
+		Object(const ObjectDesc& a) :
 			m_name{ a.name },
 			m_tags{ a.tags },
 			m_transform{ a.transform },
@@ -50,10 +51,20 @@ namespace bad {
 		void SetModel(std::shared_ptr<Model> model) { m_model = model; }
 
 		float GetRadius() const;
-		virtual void OnCollision(SceneObject* other) {};
+		virtual void OnCollision(Object* other) {};
 
-		void SetDistroyed(bool distroyed = true) { m_distroyed = distroyed; }
-		bool GetDistroyed() const { return m_distroyed; }
+		void SetActive(bool active = false) { m_active = active; }
+		bool GetActive() const { return m_active; }
+
+		virtual void Read(const json::value_t& value) {
+			JSON_READ_NAME(value, "name", m_name);
+			JSON_READ_NAME(value, "active", m_active);
+			//JSON_READ_NAME(value, "tags", m_tags);
+
+			if (JSON_HAS_NAME(value, "transform")) {
+				m_transform.Read(value["transform"]);
+			}
+		}
 
 		friend Scene;
 	protected:
@@ -64,7 +75,7 @@ namespace bad {
 		res_t<bad::Texture> m_texture;
 
 		Scene* m_scene = nullptr;
-		bool m_distroyed = false;
+		bool m_active = true;
 		float m_lifespan = -1;
 	};
 }

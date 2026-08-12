@@ -1,11 +1,11 @@
 #pragma once
 
-#include "SceneObject.h"
+#include "Object.h"
 #include "Engine.h"
 
-void bad::SceneObject::Update(){
+void bad::Object::Update(){
 	if (m_lifespan <= 0 && m_lifespan > -1) {
-		m_distroyed = true;
+		m_active = false;
 	}
 	else if (m_lifespan <= -1) {
 		m_lifespan = -1;
@@ -15,7 +15,7 @@ void bad::SceneObject::Update(){
 	}
 }
 
-void bad::SceneObject::Draw() const{
+void bad::Object::Draw() const{
 	if (!m_texture && m_model) {
 		Engine::Get().GetRenderer().DrawModel(*m_model, m_transform);
 	}
@@ -24,7 +24,7 @@ void bad::SceneObject::Draw() const{
 	}
 }
 
-float bad::SceneObject::GetRadius() const
+float bad::Object::GetRadius() const
 {
 	if (!m_texture && m_model) return m_model->GetRadius() * ((m_transform.scale.x + m_transform.scale.y) / 2) * 0.95f;
 	else if (m_texture) return m_texture->GetRadius() * ((m_transform.scale.x + m_transform.scale.y) / 2) * 0.95f;

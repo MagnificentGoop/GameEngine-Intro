@@ -10,6 +10,11 @@ namespace bad {
 		Wrap(m_transform.position.x, 0.0f, (float)bad::Engine::Get().GetRenderer().GetWidth());
 		Wrap(m_transform.position.y, 0.0f, (float)bad::Engine::Get().GetRenderer().GetHeight());
 
-		SceneObject::Update();
+		Object::Update();
+	}
+	void Actor::Read(const json::value_t& value){
+		Object::Read(value);
+
+		JSON_READ_NAME(value, "velocity", m_velocity);
 	}
 }

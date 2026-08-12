@@ -15,7 +15,7 @@ public:
 	Bomb(const BombDesc& b) : Bullet(b.bulletDesc)  { m_shrapnelAmount=b.shrapnelAmount; }
 
 	void Update();
-	void OnCollision(SceneObject* other);
+	void OnCollision(Object* other);
 private:
 	void EXPLOOD();
 	int m_shrapnelAmount;

@@ -14,6 +14,8 @@
 #include "ResourceManager.h"
 #include "Json.h"
 #include "File.h"
+#include "StringUtils.h"
+#include "Factory.h"
 
 #include <iostream>
 

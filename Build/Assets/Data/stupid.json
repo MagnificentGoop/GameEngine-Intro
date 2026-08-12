@@ -1,0 +1,10 @@
+{
+  "name": "Stupid Ahh Code",
+  "mctive": true,
+  "tags": [ "stupid", "ahh" ],
+  "transform": {
+    "position": [ 0, 0 ],
+    "roatation": 0,
+    "scale": [ 1, 1 ]
+  },
+}

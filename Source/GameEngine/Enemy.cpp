@@ -4,7 +4,7 @@
 #include "SpaceGame.h"
 
 void Enemy::Update() {
-    Player* player = m_scene->GetSceneObjectByName<Player>("Player");
+    Player* player = m_scene->GetObjectByName<Player>("Player");
     if (player) {
         bad::Vector2<float> direction = player->GetTransform().position - m_transform.position;
         float rotatoin = direction.Angle();
@@ -21,13 +21,13 @@ void Enemy::Update() {
     Actor::Update();
 }
 
-void Enemy::OnCollision(SceneObject* other)
+void Enemy::OnCollision(Object* other)
 {
     for (int i = 0; i < other->GetTags().size(); i++)
     {
         if (other->GetTags().at(i) == "PlayerBullet") {
-            SetDistroyed();
-            other->SetDistroyed(); 
+            SetActive();
+            other->SetActive(); 
 
             ((SpaceGame*)m_scene->GetGame())->AddPoints(100);
 

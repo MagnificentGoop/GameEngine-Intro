@@ -14,7 +14,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SceneObject.cpp">
+    <ClCompile Include="Object.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
@@ -103,7 +103,7 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneObject.h">
+    <ClInclude Include="Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Transform2D.h">
@@ -143,6 +143,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,6 +11,12 @@
     <Filter Include="Source\Cpp">
       <UniqueIdentifier>{ca8d3c9e-9670-4341-82a2-ac76e317d8b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{a4e4a16a-4f3d-478c-891e-9572ec96dc02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Data">
+      <UniqueIdentifier>{5525ade1-0339-4d4e-afe6-fec5dfff706e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -66,5 +72,13 @@
     <ClInclude Include="Bomb.h">
       <Filter>Source\Headers</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Build\Assets\Data\data.json">
+      <Filter>Assets\Data</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Data\stupid.json">
+      <Filter>Assets\Data</Filter>
+    </None>
   </ItemGroup>
 </Project>

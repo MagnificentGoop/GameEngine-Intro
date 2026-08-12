@@ -8,7 +8,7 @@
 
 namespace bad::json
 {
-    bool Load(const std::string& filename, rapidjson::Document& document)
+    bool Load(const std::string& filename, document_t& document)
     {
         // read the file into a string
         std::string buffer;
@@ -44,7 +44,7 @@ namespace bad::json
         return true;
     }
 
-    bool Read(const rapidjson::Value& value, const std::string& name, int& data)
+    bool Read(const value_t& value, const std::string& name, int& data)
     {
         // check if the value has the "<name>" and the correct data type
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsInt())
@@ -58,7 +58,7 @@ namespace bad::json
 
         return true;
     }
-    bool Read(const rapidjson::Value& value, const std::string& name, float& data)
+    bool Read(const value_t& value, const std::string& name, float& data)
     {
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber()) {
             std::cerr << "Could not read JSON value (float):" << name << std::endl;
@@ -69,7 +69,7 @@ namespace bad::json
 
         return true;
     }
-    bool Read(const rapidjson::Value& value, const std::string& name, bool& data)
+    bool Read(const value_t& value, const std::string& name, bool& data)
     {
         // check if the value has the "<name>" and the correct data type
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsBool())
@@ -83,7 +83,7 @@ namespace bad::json
 
         return true;
     }
-    bool Read(const rapidjson::Value& value, const std::string& name, std::string& data)
+    bool Read(const value_t& value, const std::string& name, std::string& data)
     {
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsString()) {
             std::cerr << "Could not read JSON value (string):" << name << std::endl;
