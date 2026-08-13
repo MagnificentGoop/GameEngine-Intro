@@ -94,4 +94,108 @@ namespace bad::json
 
         return true;
     }
+    bool Read(const value_t& value, const std::string& name, std::vector<int>& data)
+    {
+        // check if the value has the "<name>" and the correct data type
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray())
+        {
+            std::cerr << "Could not read JSON value (int[]):" << name << std::endl;
+            return false;
+        }
+
+        // get the data
+        data.clear();
+        const auto& array = value[name.c_str()];
+
+        for (const auto& element : array.GetArray())
+        {
+            if (!element.IsInt())
+            {
+                std::cerr << "Could not read JSON value (int[]):" << name << std::endl;
+                return false;
+            }
+
+            data.push_back(element.GetInt());
+        }
+
+        return true;
+    }
+    bool Read(const value_t& value, const std::string& name, std::vector<float>& data)
+    {
+        // check if the value has the "<name>" and the correct data type
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray())
+        {
+            std::cerr << "Could not read JSON value (float[]):" << name << std::endl;
+            return false;
+        }
+
+        // get the data
+        data.clear();
+        const auto& array = value[name.c_str()];
+
+        for (const auto& element : array.GetArray())
+        {
+            if (!element.IsFloat())
+            {
+                std::cerr << "Could not read JSON value (float[]):" << name << std::endl;
+                return false;
+            }
+
+            data.push_back(element.GetFloat());
+        }
+
+        return true;
+    }
+    bool Read(const value_t& value, const std::string& name, std::vector<bool>& data)
+    {
+        // check if the value has the "<name>" and the correct data type
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray())
+        {
+            std::cerr << "Could not read JSON value (bool[]):" << name << std::endl;
+            return false;
+        }
+
+        // get the data
+        data.clear();
+        const auto& array = value[name.c_str()];
+
+        for (const auto& element : array.GetArray())
+        {
+            if (!element.IsBool())
+            {
+                std::cerr << "Could not read JSON value (bool[]):" << name << std::endl;
+                return false;
+            }
+
+            data.push_back(element.GetBool());
+        }
+
+        return true;
+    }
+    bool Read(const value_t& value, const std::string& name, std::vector<std::string>& data)
+    {
+        // check if the value has the "<name>" and the correct data type
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray())
+        {
+            std::cerr << "Could not read JSON value (std::string[]):" << name << std::endl;
+            return false;
+        }
+
+        // get the data
+        data.clear();
+        const auto& array = value[name.c_str()];
+
+        for (const auto& element : array.GetArray())
+        {
+            if (!element.IsString())
+            {
+                std::cerr << "Could not read JSON value (std::string[]):" << name << std::endl;
+                return false;
+            }
+
+            data.push_back(element.GetString());
+        }
+
+        return true;
+    }
 }

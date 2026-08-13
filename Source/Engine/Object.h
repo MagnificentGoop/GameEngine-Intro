@@ -58,11 +58,18 @@ namespace bad {
 
 		virtual void Read(const json::value_t& value) {
 			JSON_READ_NAME(value, "name", m_name);
-			JSON_READ_NAME(value, "active", m_active);
-			//JSON_READ_NAME(value, "tags", m_tags);
+			JSON_READ_NAME(value, "tags", m_tags);
 
 			if (JSON_HAS_NAME(value, "transform")) {
 				m_transform.Read(value["transform"]);
+			}
+			JSON_READ_NAME(value, "active", m_active);
+			JSON_READ_NAME(value, "lifespan", m_lifespan);
+
+			std::string textureName;
+			JSON_READ_NAME(value, "texture", textureName);
+			if (!textureName.empty()) {
+				//m_texture = bad::Resources().SetWithID("player", "/Assets/Images/" + textureName)
 			}
 		}
 
