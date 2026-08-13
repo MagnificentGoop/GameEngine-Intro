@@ -13,6 +13,9 @@ class Bomb : public Bullet {
 public:
 	Bomb() = default;
 	Bomb(const BombDesc& b) : Bullet(b.bulletDesc)  { m_shrapnelAmount=b.shrapnelAmount; }
+	~Bomb();
+
+	CLASS_PROTOTYPE(Bomb)
 
 	void Update() override;
 	void OnCollision(bad::Object* other) override;

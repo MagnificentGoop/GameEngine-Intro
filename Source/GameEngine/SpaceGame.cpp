@@ -10,24 +10,19 @@ bool SpaceGame::Initialize()
     Game::Initialize();
 
     m_scene = new bad::Scene();
-    m_scene->SetGame(this);
-
-    m_titleText = std::make_shared<bad::Text>(bad::Resources().SetWithID<bad::Font>("font64","Assets/Fonts/font.ttf", 64));
-    m_titleText->Create("AHHHH..", bad::Color8{ 255, 255, 255 });
-
-    m_scoreText = new bad::Text(bad::Resources().SetWithID<bad::Font>("font32", "Assets/Fonts/font.ttf", 32));
-    m_livesText = new bad::Text(bad::Resources().GetWithID<bad::Font>("font32"));
-
-    bad::Resources().SetWithID<bad::Texture>("player", "Assets/Images/Player.png");
-    bad::Resources().SetWithID<bad::Texture>("enemy", "Assets/Images/Enemy.png");
-    bad::Resources().SetWithID<bad::Texture>("bullet", "Assets/Images/Bullet.png");
-    bad::Resources().SetWithID<bad::Texture>("shrapnel", "Assets/Images/Shrapnel.png");
+    m_scene->Load("Assets/Data/scene.json");
 
     bad::g_audio.Initialize();
     bad::g_audio.AddSound("scream", "Assets/Sounds/scream.mp3");
     bad::g_audio.AddSound("bullet", "Assets/Sounds/bullet_lazer.mp3");
     bad::g_audio.AddSound("bomb", "Assets/Sounds/bomb_lazer.mp3");
     bad::g_audio.AddSound("boom", "Assets/Sounds/boom.mp3");
+
+    m_titleText = std::make_shared<bad::Text>(bad::Resources().SetWithID<bad::Font>("font64", "Assets/Fonts/font.ttf", 64));
+    m_titleText->Create("AHHHH..", bad::Color8{ 255, 255, 255 });
+
+    m_scoreText = new bad::Text(bad::Resources().SetWithID<bad::Font>("font32", "Assets/Fonts/font.ttf", 32));
+    m_livesText = new bad::Text(bad::Resources().GetWithID<bad::Font>("font32"));
 
     return true;
 }
@@ -119,14 +114,9 @@ void SpaceGame::OnPlayerDead(){
 }
 
 void SpaceGame::SpawnPlayer(){
-    PlayerDesc p;
-    p.actorDesc.Object.texture = bad::Resources().GetWithID<bad::Texture>("player");
-    p.actorDesc.Object.name = "Player";
-    p.actorDesc.speed = 1000.0f;
-    p.actorDesc.Object.transform = { {bad::Engine::Get().GetRenderer().GetWidth() / 2,bad::Engine::Get().GetRenderer().GetHeight() / 2},0,{2.3,2.3} };
-    Player* player = new Player{ p };
+    auto object = bad::Factory::Instance().Create<Actor>("PlayerPrototype");
 
-    m_scene->AddObject(player);
+    m_scene->AddObject(std::move(object));
 }
 
 void SpaceGame::SpawnEnemy(){

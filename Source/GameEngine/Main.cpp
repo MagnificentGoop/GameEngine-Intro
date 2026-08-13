@@ -28,20 +28,6 @@ int main()
     std::cout << position.x << " " << position.y << std::endl;
     std::cout << color.x << " " << color.y << " " << color.z << " " << std::endl;
 
-    bad::Factory::Instance().Register<Actor>("Actor");
-    bad::Factory::Instance().Register<bad::Object>("Object");
-
-    auto actor = bad::Factory::Instance().Create<Actor>("Actor");
-    std::cout << actor->GetActive() << std::endl;
-
-    auto object = bad::Factory::Instance().Create("Object");
-
-    bad::json::document_t documentb;
-    if (bad::json::Load("Assets/Data/stupid.json", documentb)) {
-        object->Read(documentb);
-        std::cout << object->GetName() << std::endl;
-    }
-
     //INITIALIZATION/*
     if (!bad::Engine::Get().Initialize()) return 1;
     {

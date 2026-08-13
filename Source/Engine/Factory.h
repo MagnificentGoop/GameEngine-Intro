@@ -6,23 +6,41 @@
 
 namespace bad {
 	class ICreator {
-	public :
+	public:
 		virtual ~ICreator() = default;
 		virtual std::unique_ptr<Object> Create() = 0;
 	};
 
 	template <typename T>
-		requires std::derived_from<T,Object>
+		requires std::derived_from<T, Object>
 	class Creator : public ICreator {
 	public:
 		std::unique_ptr<Object> Create() override { return std::make_unique<T>(); }
 	};
+
+	template <typename T>
+		requires std::derived_from<T, Object>
+	class PrototypeCreator : public ICreator {
+	public:
+		PrototypeCreator(std::unique_ptr<Object> prototype) : m_prototype{ std::move(prototype) } {};
+		std::unique_ptr<Object> Create() override {
+			return m_prototype->Clone();
+		}
+	private:
+		std::unique_ptr<Object> m_prototype;
+	};
+
+
 
 	class Factory : public Singleton<Factory> {
 	public:
 		template <typename T>
 			requires std::derived_from<T, Object>
 		void Register(const std::string& name);
+
+		template <typename T>
+			requires std::derived_from<T, Object>
+		void RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype);
 
 		template <typename T = Object>
 			requires std::derived_from<T, Object>
@@ -34,7 +52,7 @@ namespace bad {
 
 	template<typename T>
 		requires std::derived_from<T, Object>
-	inline void Factory::Register(const std::string& name){
+	inline void Factory::Register(const std::string& name) {
 		if (m_registry.contains(ToLower(name))) {
 			std::cerr << "Object already registered: " << name << std::endl;
 			return;
@@ -65,5 +83,19 @@ namespace bad {
 		}
 
 		return std::unique_ptr<T>();
+	}
+
+	template<typename T>
+		requires std::derived_from<T, Object>
+	inline void Factory::RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype)
+	{
+		std::string lowerName = ToLower(name);
+
+		if (!m_registry.contains(lowerName)) {
+			std::cerr << "Object not registered: " << name << std::endl;
+			return;
+		}
+
+		m_registry[lowerName] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
 	}
 }

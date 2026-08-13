@@ -30,3 +30,21 @@ float bad::Object::GetRadius() const
 	else if (m_texture) return m_texture->GetRadius() * ((m_transform.scale.x + m_transform.scale.y) / 2) * 0.95f;
 	else return 0;
 }
+
+void bad::Object::Read(const json::value_t& value){
+
+	JSON_READ_NAME(value, "name", m_name);
+	JSON_READ_NAME(value, "tags", m_tags);
+
+	if (JSON_HAS_NAME(value, "transform")) {
+		m_transform.Read(value["transform"]);
+	}
+	JSON_READ_NAME(value, "active", m_active);
+	JSON_READ_NAME(value, "lifespan", m_lifespan);
+
+	std::string textureName;
+	JSON_READ_NAME(value, "texture", textureName);
+	if (!textureName.empty()) {
+		m_texture = bad::Resources().SetWithID<bad::Texture>("player", "/Assets/Images/" + textureName);
+	}
+}

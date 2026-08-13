@@ -7,8 +7,10 @@ namespace bad {
 	class Scene {
 	public:
 		void RemoveAllObjects();
+		void AddObject(std::unique_ptr<Object> actor) { actor->m_scene = this; m_pendingObjects.push_back(actor); }
 
-		void AddObject(Object* actor) { actor->m_scene = this; m_pendingObjects.push_back(actor); }
+		bool Load(const std::string& sceneName);
+
 		void Update();
 		void Draw();
 		void Clear();
@@ -23,8 +25,8 @@ namespace bad {
 		void UpdateCollisions();
 
 	private:
-		std::vector<Object*> m_objects;
-		std::vector<Object*> m_pendingObjects;
+		std::vector< std::unique_ptr<Object>> m_objects;
+		std::vector< std::unique_ptr<Object>> m_pendingObjects;
 
 		class Game* m_game = nullptr;
 	};

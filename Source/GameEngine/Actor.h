@@ -15,6 +15,9 @@
 	public:
 		Actor() = default;
 		Actor(const ActorDesc& a) : bad::Object(a.Object), m_velocity(a.velocity), m_drag(a.drag), m_speed(a.speed) {};
+		~Actor();
+
+		CLASS_PROTOTYPE(Actor)
 
 		virtual void Update() override;
 		virtual void Draw() const override { bad::Object::Draw(); };

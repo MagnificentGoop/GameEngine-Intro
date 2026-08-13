@@ -2,20 +2,57 @@
 #include "Scene.h"
 #include "Object.h"
 #include "Engine.h"
+#include "Factory.h"
 #include <iostream>
 
 namespace bad {
 	void Scene::RemoveAllObjects(){
-		for (auto object : m_objects)
-		{
-			delete object;
-		}
 		m_objects.clear();
+		m_pendingObjects.clear();
+	}
+
+	bool Scene::Load(const std::string& sceneName)
+	{
+		bad::json::document_t document;
+		if (bad::json::Load(sceneName, document)) {
+
+			if (JSON_HAS_NAME(document, "actors"))
+			{
+				for (auto& objectValue : JSON_GET_NAME(document, "actors").GetArray())
+				{
+					std::string typeName;
+					JSON_READ_NAME(objectValue, "type", typeName);
+
+					auto object = Factory::Instance().Create<Object>(typeName);
+					object->Read(objectValue);
+
+					bool prototype = false;
+					JSON_READ(objectValue, prototype);
+					
+					if(prototype){
+						std::string name;
+						JSON_READ(objectValue, name);
+						Factory::Instance().RegisterPrototype<Object>("PlayerPrototype", std::move(object)); 
+					}
+					else {
+						AddObject(std::move(object));
+					}
+				}
+			}
+			//JSON_READ(document, type);
+
+			
+		}
+		else {
+			return false;
+		}
+
+		return true;
 	}
 
 	void Scene::Update() {
 		bad::Engine::Get().Update();
-		for (Object* object : m_objects)
+		for (auto& object : m_objects)
 		{
 			object->Update();
 		}
@@ -31,7 +68,7 @@ namespace bad {
 	}
 
 	void Scene::Draw() {
-		for (Object* object : m_objects) {
+		for (auto& object : m_objects) {
 			object->Draw();
 		}
 		Engine::Get().GetRenderer().Render();
@@ -45,8 +82,8 @@ namespace bad {
 
 				float distance = (actorA->GetTransform().position - actorB->GetTransform().position).Length();
 				if (distance <= actorA->GetRadius() + actorB->GetRadius()) {
-					actorA->OnCollision(actorB);
-					actorB->OnCollision(actorA);
+					actorA->OnCollision(actorB.get());
+					actorB->OnCollision(actorA.get());
 				}
 			}
 		}

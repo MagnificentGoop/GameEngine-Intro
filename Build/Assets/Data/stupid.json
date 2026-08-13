@@ -1,11 +1,56 @@
 {
-  "name": "Stupid Ahh Code",
-  "mctive": true,
-  "tags": [ "stupid", "ahh" ],
-  "transform": {
-    "position": [ 0, 0 ],
-    "roatation": 0,
-    "scale": [ 1, 1 ]
-  },
-
+  "actors": [
+    {
+      "name": "player",
+      "tags": [ "player" ],
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "active": true,
+      "lifespan": -1,
+      "texture": "Player.png",
+        "prototype": true
+    },
+    {
+      "name": "enemy",
+      "tags": [ "enemy" ],
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "active": true,
+      "lifespan": -1,
+      "texture": "Enemy.png",
+      "prototype": true //TODO change this and add appropriate reads in everything deriving object
+    },
+    {
+      "name": "bullet",
+      "tags": [ "bullet" ],
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "active": true,
+      "lifespan": -1,
+      "texture": "Bullet.png",
+      "prototype": true
+    },
+    {
+      "name": "bomb",
+      "tags": [ "bomb" ],
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "active": true,
+      "lifespan": -1,
+      "texture": "Shrapnel.png",
+      "prototype": true
+    }
+  ]
 }

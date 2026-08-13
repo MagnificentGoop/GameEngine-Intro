@@ -7,6 +7,8 @@
 #include "ResourceManager.h"
 #include "Json.h"
 
+#define CLASS_PROTOTYPE(classname) virtual std::unique_ptr<Object> Clone() const { return std::make_unique<classname>(*this); }
+
 namespace bad {
 	class Scene;
 
@@ -28,6 +30,9 @@ namespace bad {
 			m_model{ a.model },
 			m_texture{a.texture},
 			m_lifespan{ a.lifespan } {};
+		~Object();
+
+		CLASS_PROTOTYPE(Object)
 
 		virtual void Update();
 		virtual void Draw() const;
@@ -56,22 +61,7 @@ namespace bad {
 		void SetActive(bool active = false) { m_active = active; }
 		bool GetActive() const { return m_active; }
 
-		virtual void Read(const json::value_t& value) {
-			JSON_READ_NAME(value, "name", m_name);
-			JSON_READ_NAME(value, "tags", m_tags);
-
-			if (JSON_HAS_NAME(value, "transform")) {
-				m_transform.Read(value["transform"]);
-			}
-			JSON_READ_NAME(value, "active", m_active);
-			JSON_READ_NAME(value, "lifespan", m_lifespan);
-
-			std::string textureName;
-			JSON_READ_NAME(value, "texture", textureName);
-			if (!textureName.empty()) {
-				//m_texture = bad::Resources().SetWithID("player", "/Assets/Images/" + textureName)
-			}
-		}
+		virtual void Read(const json::value_t& value);
 
 		friend Scene;
 	protected:

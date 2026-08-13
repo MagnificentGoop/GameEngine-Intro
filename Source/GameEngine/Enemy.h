@@ -9,6 +9,9 @@ public:
 	Enemy() = default;
 	Enemy(const EnemyDesc& p) : Actor(p.enemyDesc) {};
 	Enemy(const ActorDesc& a) : Actor(a) {};
+	~Enemy();
+
+	CLASS_PROTOTYPE(Enemy)
 
 	void Update() override;
 
