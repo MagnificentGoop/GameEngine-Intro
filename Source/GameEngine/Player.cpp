@@ -26,7 +26,7 @@ void Player::Update() {
         desc.bulletDesc.speed = 1000;
         desc.bulletDesc.drag = 1.0f;
 
-        m_scene->AddObject(new Bullet(desc));
+        m_scene->AddObject(std::make_unique<Bullet>(desc));
         ((SpaceGame*)m_scene->GetGame())->AddPoints(1);
         bad::g_audio.PlaySound("bullet");
 
@@ -45,7 +45,7 @@ void Player::Update() {
         desc.bulletDesc.bulletDesc.drag = 0.16f;
         desc.shrapnelAmount = 20;
 
-        m_scene->AddObject(new Bomb(desc));
+        m_scene->AddObject(std::make_unique<Bomb>(desc));
         ((SpaceGame*)m_scene->GetGame())->AddPoints(5);
 
         bad::g_audio.PlaySound("bomb");

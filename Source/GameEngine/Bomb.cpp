@@ -25,7 +25,7 @@ void Bomb::EXPLOOD(){
         desc.bulletDesc.drag = 1.0f;
 
 
-        m_scene->AddObject(new Bullet(desc));
+        m_scene->AddObject(std::make_unique<Bullet>(desc));
         bad::g_audio.PlaySound("boom");
 
 

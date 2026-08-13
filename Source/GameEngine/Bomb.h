@@ -13,7 +13,7 @@ class Bomb : public Bullet {
 public:
 	Bomb() = default;
 	Bomb(const BombDesc& b) : Bullet(b.bulletDesc)  { m_shrapnelAmount=b.shrapnelAmount; }
-	~Bomb();
+	~Bomb() {};
 
 	CLASS_PROTOTYPE(Bomb)
 

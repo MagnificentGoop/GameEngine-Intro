@@ -11,7 +11,7 @@ public:
 	Bullet() = default;
 	Bullet(const BulletDesc& p) : Actor(p.bulletDesc) { m_startingTime = bad::g_time.GetTime(); }
 	Bullet(const ActorDesc& a) : Actor(a) { m_startingTime = bad::g_time.GetTime(); }
-	~Bullet();
+	~Bullet() {};
 
 	CLASS_PROTOTYPE(Bullet)
 

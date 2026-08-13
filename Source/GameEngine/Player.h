@@ -10,7 +10,7 @@ public:
 	Player() = default;
 	Player(const PlayerDesc& p) : Actor(p.actorDesc) {};
 	Player(const ActorDesc& a) : Actor(a) {};
-	~Player();
+	~Player() {};
 
 	CLASS_PROTOTYPE(Player)
 

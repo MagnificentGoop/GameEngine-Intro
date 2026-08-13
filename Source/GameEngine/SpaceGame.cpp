@@ -127,5 +127,5 @@ void SpaceGame::SpawnEnemy(){
     e.enemyDesc.Object.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {2,2} };
     Enemy* enemy = new Enemy{ e };
     enemy->AddTag("Death");
-    m_scene->AddObject(enemy);
+    m_scene->AddObject(std::unique_ptr<Enemy>(enemy));
 }

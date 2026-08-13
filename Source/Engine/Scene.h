@@ -7,7 +7,7 @@ namespace bad {
 	class Scene {
 	public:
 		void RemoveAllObjects();
-		void AddObject(std::unique_ptr<Object> actor) { actor->m_scene = this; m_pendingObjects.push_back(actor); }
+		void AddObject(std::unique_ptr<Object> actor);
 
 		bool Load(const std::string& sceneName);
 
@@ -34,8 +34,8 @@ namespace bad {
 	template<typename T>
 	inline T* Scene::GetObjectByName(const std::string& name)
 	{
-		for (auto object : m_objects) {
-			T* objectT = dynamic_cast<T*>(object);
+		for (auto& object : m_objects) {
+			T* objectT = dynamic_cast<T*>(object.get());
 			if (objectT && objectT->m_name == name) {
 				return objectT;
 			}

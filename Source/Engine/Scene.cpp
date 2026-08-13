@@ -4,11 +4,23 @@
 #include "Engine.h"
 #include "Factory.h"
 #include <iostream>
+#include <iterator>
 
 namespace bad {
 	void Scene::RemoveAllObjects(){
 		m_objects.clear();
 		m_pendingObjects.clear();
+	}
+
+	void Scene::AddObject(std::unique_ptr<Object> actor) {
+		if (!actor)
+		{
+			std::cerr << "Scene::AddObject received a null Object.\n";
+			return;
+		}
+
+		actor->m_scene = this;
+		m_pendingObjects.push_back(std::move(actor));
 	}
 
 	bool Scene::Load(const std::string& sceneName)
@@ -24,6 +36,11 @@ namespace bad {
 					JSON_READ_NAME(objectValue, "type", typeName);
 
 					auto object = Factory::Instance().Create<Object>(typeName);
+					if (!object)
+					{
+						std::cerr << "Failed to create object of type: " << typeName << std::endl;
+						continue;
+					}
 					object->Read(objectValue);
 
 					bool prototype = false;
@@ -57,12 +74,13 @@ namespace bad {
 			object->Update();
 		}
 		UpdateCollisions();
+
 		//remove destroyed actors
-		std::erase_if(m_objects, [](auto Object) {return !Object->m_active;});
+		std::erase_if(m_objects, [](const auto& object) {return !object->m_active;});
 		
 
 		//insert new actors
-		m_objects.insert(m_objects.end(), m_pendingObjects.begin(), m_pendingObjects.end());
+		m_objects.insert(m_objects.end(),std::make_move_iterator(m_pendingObjects.begin()),std::make_move_iterator(m_pendingObjects.end()));
 
 		m_pendingObjects.clear();
 	}

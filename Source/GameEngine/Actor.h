@@ -15,7 +15,7 @@
 	public:
 		Actor() = default;
 		Actor(const ActorDesc& a) : bad::Object(a.Object), m_velocity(a.velocity), m_drag(a.drag), m_speed(a.speed) {};
-		~Actor();
+		~Actor() {};
 
 		CLASS_PROTOTYPE(Actor)
 

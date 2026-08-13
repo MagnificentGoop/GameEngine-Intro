@@ -30,7 +30,7 @@ namespace bad {
 			m_model{ a.model },
 			m_texture{a.texture},
 			m_lifespan{ a.lifespan } {};
-		~Object();
+		~Object() {};
 
 		CLASS_PROTOTYPE(Object)
 
