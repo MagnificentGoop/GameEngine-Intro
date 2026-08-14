@@ -2,15 +2,20 @@
 #include "Engine.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Assets.h"
+#include "Bomb.h"
 #include <memory>
 
 bool SpaceGame::Initialize()
 {
     Game::Initialize();
 
+    bad::Factory::Instance().Register<Player>("Player");
+    bad::Factory::Instance().Register<Enemy>("Enemy");
+    bad::Factory::Instance().Register<Bullet>("Bullet");
+    bad::Factory::Instance().Register<Bomb>("Bomb");
+
     m_scene = new bad::Scene();
-    m_scene->Load("Assets/Data/scene.json");
+    m_scene->Load("Assets/Data/stupid.json");
 
     bad::g_audio.Initialize();
     bad::g_audio.AddSound("scream", "Assets/Sounds/scream.mp3");
@@ -23,7 +28,6 @@ bool SpaceGame::Initialize()
 
     m_scoreText = new bad::Text(bad::Resources().SetWithID<bad::Font>("font32", "Assets/Fonts/font.ttf", 32));
     m_livesText = new bad::Text(bad::Resources().GetWithID<bad::Font>("font32"));
-
     return true;
 }
 

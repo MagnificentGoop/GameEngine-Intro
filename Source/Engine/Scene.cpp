@@ -57,8 +57,6 @@ namespace bad {
 				}
 			}
 			//JSON_READ(document, type);
-
-			
 		}
 		else {
 			return false;

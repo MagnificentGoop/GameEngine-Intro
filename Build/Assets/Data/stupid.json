@@ -1,6 +1,7 @@
 {
   "actors": [
     {
+      "type":  "Player",
       "name": "player",
       "tags": [ "player" ],
       "transform": {
@@ -11,11 +12,12 @@
       "active": true,
       "lifespan": -1,
       "texture": "Player.png",
-        "prototype": true
+      "prototype": true
     },
     {
+      "type": "Enemy",
       "name": "enemy",
-      "tags": [ "enemy" ],
+      "tags": [ "enemy", "Death" ],
       "transform": {
         "position": [ 0, 0 ],
         "rotation": 0,
@@ -24,9 +26,10 @@
       "active": true,
       "lifespan": -1,
       "texture": "Enemy.png",
-      "prototype": true //TODO change this and add appropriate reads in everything deriving object
+      "prototype": true
     },
     {
+      "type": "Bullet",
       "name": "bullet",
       "tags": [ "bullet" ],
       "transform": {
@@ -40,6 +43,7 @@
       "prototype": true
     },
     {
+      "type": "Bomb",
       "name": "bomb",
       "tags": [ "bomb" ],
       "transform": {
