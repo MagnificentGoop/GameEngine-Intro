@@ -20,7 +20,7 @@ public:
 
 	bool Initialize() override;
 	void Update() override;
-	void Draw() override;
+	void Draw() const override;
 
 	void OnPlayerDead();
 	void AddPoints(int points) { m_score += points; }

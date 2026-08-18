@@ -17,7 +17,7 @@ public:
 
 	CLASS_PROTOTYPE(Bomb)
 
-	void Update() override;
+	void Update(float dt) override;
 	void OnCollision(bad::Object* other) override;
 private:
 	void EXPLOOD();

@@ -152,7 +152,6 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -168,7 +167,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Bullet.h" />

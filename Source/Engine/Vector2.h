@@ -53,6 +53,8 @@ namespace bad {
 		T LengthSqr() const { return (x * x) + (y * y); }
 		T Length() const { return std::sqrt(LengthSqr()); }
 
+		T Distance(const Vector2<T> v) const { return (v - *this).Length(); }
+
 		Vector2 Normalized() const { return (Length() == 0) ? Vector2<T>{0,0} : *this / Length(); }
 		T Dot(const Vector2<T>& v) const { return ((x * v.x) + (y * v.y)); }
 		T Angle() const{ return std::atan2(y,x); }

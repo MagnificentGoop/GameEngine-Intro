@@ -3,22 +3,22 @@
 #include "Engine.h"
 #include "SpaceGame.h"
 
-void Enemy::Update() {
+void Enemy::Update(float dt) {
     Player* player = m_scene->GetObjectByName<Player>("Player");
     if (player) {
         bad::Vector2<float> direction = player->GetTransform().position - m_transform.position;
         float rotatoin = direction.Angle();
-        SetRotatoin(rotatoin * bad::RadToDeg);
+        SetRotation(rotatoin * bad::RadToDeg);
 
         bad::Vector2<float> forward{ 1,0 };
         forward = forward.Rotate(m_transform.rotation * bad::DegToRad);
-        AddVelocity(forward * m_speed * bad::g_time.GetDeltaTime());
+        AddVelocity(forward * m_speed * dt);
     }
 
     bad::Vector2<float> velocity{ 1,0 };
-    velocity = velocity.Rotate(m_transform.rotation * bad::DegToRad) * m_speed * bad::g_time.GetDeltaTime();
+    velocity = velocity.Rotate(m_transform.rotation * bad::DegToRad) * m_speed * dt;
 
-    Actor::Update();
+    Actor::Update(dt);
 }
 
 void Enemy::OnCollision(Object* other)

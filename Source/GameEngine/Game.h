@@ -9,7 +9,7 @@ namespace bad {
 		virtual void Shutdown() {};
 
 		virtual void Update();
-		virtual void Draw();
+		virtual void Draw() const;
 
 		void SetScene(class Scene* scene) { m_scene = scene; }
 

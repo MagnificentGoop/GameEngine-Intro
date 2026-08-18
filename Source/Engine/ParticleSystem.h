@@ -30,7 +30,7 @@ namespace bad {
 		void Shutdown();
 
 		void Update();
-		void Draw();
+		void Draw() const;
 
 		void AddParticle(const Particle& particle);
 

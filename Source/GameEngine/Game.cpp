@@ -6,7 +6,7 @@ namespace bad {
 		m_scene->Update();
 	}
 
-	void Game::Draw() {
+	void Game::Draw() const {
 		m_scene->Draw();
 	}
 }

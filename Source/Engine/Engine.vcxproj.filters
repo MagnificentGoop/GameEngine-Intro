@@ -12,6 +12,12 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{426c76d7-8a1d-4070-af57-d85e20066824}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components headers">
+      <UniqueIdentifier>{80bb106e-7c12-474e-bb5c-db18bf419fdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components cpp">
+      <UniqueIdentifier>{c8e7f0e7-9105-4530-902c-fa576626b334}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Object.cpp">
@@ -58,6 +64,18 @@
     </ClCompile>
     <ClCompile Include="Json.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRendererComponent.cpp">
+      <Filter>Components cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\CircleColliderComponent.cpp">
+      <Filter>Components cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ColliderComponent.cpp">
+      <Filter>Components cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +168,24 @@
     </ClInclude>
     <ClInclude Include="Factory.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\RendererComponent.h">
+      <Filter>Components headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteRendererComponent.h">
+      <Filter>Components headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ColliderComponent.h">
+      <Filter>Components headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CircleColliderComponent.h">
+      <Filter>Components headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

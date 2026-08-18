@@ -11,8 +11,18 @@
       },
       "active": true,
       "lifespan": -1,
-      "texture": "Player.png",
-      "prototype": true
+      "prototype": true,
+      "velocity": [ 0, 0 ],
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Player.png"
+        },
+        {
+          "type": "CircleCollidercomponent",
+          "radius":  64
+        }
+      ]
     },
     {
       "type": "Enemy",
@@ -25,8 +35,18 @@
       },
       "active": true,
       "lifespan": -1,
-      "texture": "Enemy.png",
-      "prototype": true
+      "prototype": true,
+      "velocity": [ 0, 0 ],
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Enemy.png"
+        },
+        {
+          "type": "CircleCollidercomponent",
+          "radius": 64
+        }
+      ]
     },
     {
       "type": "Bullet",
@@ -39,8 +59,18 @@
       },
       "active": true,
       "lifespan": -1,
-      "texture": "Bullet.png",
-      "prototype": true
+      "prototype": true,
+      "velocity": [ 0, 0 ],
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Bullet.png"
+        },
+        {
+          "type": "CircleCollidercomponent",
+          "radius": 64
+        }
+      ]
     },
     {
       "type": "Bomb",
@@ -53,8 +83,18 @@
       },
       "active": true,
       "lifespan": -1,
-      "texture": "Shrapnel.png",
-      "prototype": true
+      "prototype": true,
+      "velocity": [ 0, 0 ],
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Shrapnel.png"
+        },
+        {
+          "type": "CircleCollidercomponent",
+          "radius": 64
+        }
+      ]
     }
   ]
 }

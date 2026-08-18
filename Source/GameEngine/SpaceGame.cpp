@@ -9,7 +9,7 @@ bool SpaceGame::Initialize()
 {
     Game::Initialize();
 
-    bad::Factory::Instance().Register<Player>("Player");
+    bad::Factory::Instance().Register<bad::Actor>("Actor");
     bad::Factory::Instance().Register<Enemy>("Enemy");
     bad::Factory::Instance().Register<Bullet>("Bullet");
     bad::Factory::Instance().Register<Bomb>("Bomb");
@@ -47,7 +47,7 @@ void SpaceGame::Update()
         break;
     case GameState::StartLevel:
         m_spawnTimer = 1;
-        m_scene->RemoveAllObjects();
+        m_scene->RemoveAllActors();
         SpawnPlayer();
         m_gameState = GameState::Game;
         break;
@@ -68,7 +68,7 @@ void SpaceGame::Update()
         break;
     case GameState::GameOver:
         if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-            m_scene->RemoveAllObjects();
+            m_scene->RemoveAllActors();
             m_gameState = GameState::StartGame;
         }
         break;
@@ -79,7 +79,7 @@ void SpaceGame::Update()
     Game::Update();
 }
 
-void SpaceGame::Draw()
+void SpaceGame::Draw() const
 {
     bad::Engine::Get().GetRenderer().Clear();
     switch (m_gameState)
@@ -118,18 +118,17 @@ void SpaceGame::OnPlayerDead(){
 }
 
 void SpaceGame::SpawnPlayer(){
-    auto object = bad::Factory::Instance().Create<Actor>("PlayerPrototype");
+    auto object = bad::Factory::Instance().Create<bad::Actor>("PlayerPrototype");
 
-    m_scene->AddObject(std::move(object));
+    m_scene->AddActor(std::move(object));
 }
 
 void SpaceGame::SpawnEnemy(){
     EnemyDesc e;
-    e.enemyDesc.Object.name = "Enemy";
-    e.enemyDesc.Object.texture = bad::Resources().GetWithID<bad::Texture>("enemy");
+    e.enemyDesc.object.name = "Enemy";
     e.enemyDesc.speed = 500.0f;
-    e.enemyDesc.Object.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {2,2} };
+    e.enemyDesc.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {2,2} };
     Enemy* enemy = new Enemy{ e };
     enemy->AddTag("Death");
-    m_scene->AddObject(std::unique_ptr<Enemy>(enemy));
+    m_scene->AddActor(std::unique_ptr<Enemy>(enemy));
 }

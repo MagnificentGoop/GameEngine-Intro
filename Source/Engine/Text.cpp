@@ -34,7 +34,7 @@ namespace bad {
 		return true;
 	}
 
-	void Text::Draw(float x, float y, HOrigin hOrigin, VOrigin vOrigin) {
+	void Text::Draw(float x, float y, HOrigin hOrigin, VOrigin vOrigin) const {
 		// get the texture width and height
 		float width, height;
 		bool success = SDL_GetTextureSize(m_texture, &width, &height);

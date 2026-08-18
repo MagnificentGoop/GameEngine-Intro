@@ -24,8 +24,8 @@ namespace bad {
 		~Text();
 
 		bool Create(const std::string& text, const Color8& color);
-		void Draw(float x, float y, HOrigin hOrigin, VOrigin vOrigin);
-		void Draw(float x, float y) { Draw(x, y, m_hOrigin, m_vOrigin); } //overload
+		void Draw(float x, float y, HOrigin hOrigin, VOrigin vOrigin) const;
+		void Draw(float x, float y) const { Draw(x, y, m_hOrigin, m_vOrigin); } //overload
 		void SetHorizontalOrigin(HOrigin h) { m_hOrigin = h; }
 		void SetVerticalOrigin(VOrigin v) { m_vOrigin = v; }
 		HOrigin GetHorizontalOrigin() { return m_hOrigin; }

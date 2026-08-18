@@ -1,21 +1,21 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "Object.h"
+#include "Actor.h"
 namespace bad {
 	class Engine;
 	class Scene {
 	public:
-		void RemoveAllObjects();
-		void AddObject(std::unique_ptr<Object> actor);
+		void RemoveAllActors();
+		void AddActor(std::unique_ptr<Actor> actor);
 
 		bool Load(const std::string& sceneName);
 
 		void Update();
-		void Draw();
+		void Draw() const;
 		void Clear();
 
-		template<typename T = Object>
+		template<typename T = Actor>
 		T* GetObjectByName(const std::string& name);
 
 		void SetGame(class Game* game) { m_game = game; }
@@ -25,8 +25,8 @@ namespace bad {
 		void UpdateCollisions();
 
 	private:
-		std::vector< std::unique_ptr<Object>> m_objects;
-		std::vector< std::unique_ptr<Object>> m_pendingObjects;
+		std::vector< std::unique_ptr<Actor>> m_objects;
+		std::vector< std::unique_ptr<Actor>> m_pendingObjects;
 
 		class Game* m_game = nullptr;
 	};
@@ -34,8 +34,8 @@ namespace bad {
 	template<typename T>
 	inline T* Scene::GetObjectByName(const std::string& name)
 	{
-		for (auto& object : m_objects) {
-			T* objectT = dynamic_cast<T*>(object.get());
+		for (auto& actor : m_objects) {
+			T* objectT = dynamic_cast<T*>(actor.get());
 			if (objectT && objectT->m_name == name) {
 				return objectT;
 			}

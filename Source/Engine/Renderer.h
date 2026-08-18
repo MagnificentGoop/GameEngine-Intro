@@ -39,12 +39,12 @@ namespace bad
 			void DrawRect(const Vector4<float>& rect, const Color8 c, const bool shouldFill = false) const{
 				DrawRect(rect.x, rect.y, rect.w, rect.w, c, shouldFill);
 			};
-			void DrawRect(const Vector3<float>& rect, const Color8 c, const bool shouldFill = false) {
+			void DrawRect(const Vector3<float>& rect, const Color8 c, const bool shouldFill = false) const {
 				DrawRect(rect.x, rect.y, rect.s, rect.s, c, shouldFill);
 			}
 
 			void DrawLine(const float x1, const float y1, const float x2, const float y2, const Color8 c) const;
-			void DrawLine(const Vector4<float>& l, const Color8 c) const{DrawLine(l.x, l.y, l.z, l.w, c);}
+			void DrawLine(const Vector4<float>& l, const Color8 c) const {DrawLine(l.x, l.y, l.z, l.w, c);}
 			void DrawLine(const Vector2<float>& pointA, const Vector2<float>& pointB, const Color8 c) const {DrawLine(pointA.x, pointA.y, pointB.x, pointB.y, c);}
 
 			void DrawText(const char* text, const float x, const float y, const Color8 c, const int fontSize = 32, const char* fontPath = nullptr) const;
@@ -57,9 +57,9 @@ namespace bad
 
 			void DrawModel(const Model& model, const Transform2D& transform) const;
 
-			void DrawTexture(const class Texture& texture, float x, float y);
-			void DrawTexture(const class Texture& texture, float x, float y, float angle, const Vector2<float>& scale = {1.0f, 1.0f}, bool flipH = false);
-			void DrawTexture(const Texture& texture, const Transform2D& transform, bool flipH = false);
+			void DrawTexture(const class Texture& texture, float x, float y) const;
+			void DrawTexture(const class Texture& texture, float x, float y, float angle, const Vector2<float>& scale = {1.0f, 1.0f}, bool flipH = false) const;
+			void DrawTexture(const Texture& texture, const Transform2D& transform, bool flipH = false) const;
 
 			void Render();
 			void DestroyRenderer();

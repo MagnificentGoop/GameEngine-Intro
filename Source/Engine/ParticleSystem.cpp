@@ -34,7 +34,7 @@ namespace bad {
 		}
 	}
 
-	void ParticleSystem::Draw()
+	void ParticleSystem::Draw() const
 	{
 		// draw all active particlee
 		for (auto& particle : m_particles)

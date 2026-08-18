@@ -1,21 +1,22 @@
 #include "pch.h"
 #include "Scene.h"
-#include "Object.h"
+#include "Actor.h"
 #include "Engine.h"
 #include "Factory.h"
 #include <iostream>
 #include <iterator>
+#include "Components/ColliderComponent.h"
 
 namespace bad {
-	void Scene::RemoveAllObjects(){
+	void Scene::RemoveAllActors(){
 		m_objects.clear();
 		m_pendingObjects.clear();
 	}
 
-	void Scene::AddObject(std::unique_ptr<Object> actor) {
+	void Scene::AddActor(std::unique_ptr<Actor> actor) {
 		if (!actor)
 		{
-			std::cerr << "Scene::AddObject received a null Object.\n";
+			std::cerr << "Scene::AddActor received a null Actor.\n";
 			return;
 		}
 
@@ -35,13 +36,13 @@ namespace bad {
 					std::string typeName;
 					JSON_READ_NAME(objectValue, "type", typeName);
 
-					auto object = Factory::Instance().Create<Object>(typeName);
-					if (!object)
+					auto actor = Factory::Instance().Create<Actor>(typeName);
+					if (!actor)
 					{
-						std::cerr << "Failed to create object of type: " << typeName << std::endl;
+						std::cerr << "Failed to create actor of type: " << typeName << std::endl;
 						continue;
 					}
-					object->Read(objectValue);
+					actor->Read(objectValue);
 
 					bool prototype = false;
 					JSON_READ(objectValue, prototype);
@@ -49,10 +50,10 @@ namespace bad {
 					if(prototype){
 						std::string name;
 						JSON_READ(objectValue, name);
-						Factory::Instance().RegisterPrototype<Object>("PlayerPrototype", std::move(object)); 
+						Factory::Instance().RegisterPrototype<Actor>("PlayerPrototype", std::move(actor)); 
 					}
 					else {
-						AddObject(std::move(object));
+						AddActor(std::move(actor));
 					}
 				}
 			}
@@ -67,14 +68,14 @@ namespace bad {
 
 	void Scene::Update() {
 		bad::Engine::Get().Update();
-		for (auto& object : m_objects)
+		for (auto& actor : m_objects)
 		{
-			object->Update();
+			actor->Update(g_time.GetDeltaTime());
 		}
 		UpdateCollisions();
 
 		//remove destroyed actors
-		std::erase_if(m_objects, [](const auto& object) {return !object->m_active;});
+		std::erase_if(m_objects, [](const auto& actor) {return !actor->m_active;});
 		
 
 		//insert new actors
@@ -83,9 +84,9 @@ namespace bad {
 		m_pendingObjects.clear();
 	}
 
-	void Scene::Draw() {
-		for (auto& object : m_objects) {
-			object->Draw();
+	void Scene::Draw() const {
+		for (auto& actor : m_objects) {
+			actor->Draw(Engine::Get().GetRenderer());
 		}
 		Engine::Get().GetRenderer().Render();
 	}
@@ -96,8 +97,12 @@ namespace bad {
 			for (auto& actorB : m_objects) {
 				if (actorA == actorB || !actorA->m_active || !actorB->m_active) continue;
 
-				float distance = (actorA->GetTransform().position - actorB->GetTransform().position).Length();
-				if (distance <= actorA->GetRadius() + actorB->GetRadius()) {
+				auto colliderA = actorA->GetComponent<ColliderComponent>();
+				auto colliderB = actorB->GetComponent<ColliderComponent>();
+
+				if (!colliderA || !colliderB) continue;
+
+				if (colliderA->CheckCollision(*colliderB)) {
 					actorA->OnCollision(actorB.get());
 					actorB->OnCollision(actorA.get());
 				}
