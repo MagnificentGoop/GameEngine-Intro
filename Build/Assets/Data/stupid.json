@@ -2,7 +2,7 @@
   "actors": [
     {
       "type":  "Player",
-      "name": "player",
+      "name": "playerPrototype",
       "tags": [ "player" ],
       "transform": {
         "position": [ 0, 0 ],
@@ -13,20 +13,21 @@
       "lifespan": -1,
       "prototype": true,
       "velocity": [ 0, 0 ],
+      "damping": 0.8,
       "components": [
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/Images/Player.png"
         },
         {
-          "type": "CircleCollidercomponent",
-          "radius":  64
+          "type": "CircleColliderComponent",
+          "radius": 64
         }
       ]
     },
     {
       "type": "Enemy",
-      "name": "enemy",
+      "name": "enemyPrototype",
       "tags": [ "enemy", "Death" ],
       "transform": {
         "position": [ 0, 0 ],
@@ -37,20 +38,21 @@
       "lifespan": -1,
       "prototype": true,
       "velocity": [ 0, 0 ],
+      "damping": 0.8,
       "components": [
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/Images/Enemy.png"
         },
         {
-          "type": "CircleCollidercomponent",
+          "type": "CircleColliderComponent",
           "radius": 64
         }
       ]
     },
     {
       "type": "Bullet",
-      "name": "bullet",
+      "name": "bulletPrototype",
       "tags": [ "bullet" ],
       "transform": {
         "position": [ 0, 0 ],
@@ -59,22 +61,23 @@
       },
       "active": true,
       "lifespan": -1,
-      "prototype": true,
+      "prototype": false,
       "velocity": [ 0, 0 ],
+      "damping": 0.8,
       "components": [
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/Images/Bullet.png"
         },
         {
-          "type": "CircleCollidercomponent",
+          "type": "CircleColliderComponent",
           "radius": 64
         }
       ]
     },
     {
       "type": "Bomb",
-      "name": "bomb",
+      "name": "bombPrototype",
       "tags": [ "bomb" ],
       "transform": {
         "position": [ 0, 0 ],
@@ -85,13 +88,14 @@
       "lifespan": -1,
       "prototype": true,
       "velocity": [ 0, 0 ],
+      "damping": 0.8,
       "components": [
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/Images/Shrapnel.png"
         },
         {
-          "type": "CircleCollidercomponent",
+          "type": "CircleColliderComponent",
           "radius": 64
         }
       ]

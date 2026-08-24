@@ -3,6 +3,9 @@
 #include "Actor.h"
 
 namespace bad {
+
+	FACTORY_REGISTER(CircleColliderComponent)
+
 	bool CircleColliderComponent::CheckCollision(const ColliderComponent& other) {
 		const CircleColliderComponent* circleCollider = dynamic_cast<const CircleColliderComponent*>(&other);
 		if (circleCollider == nullptr) return false;

@@ -9,12 +9,8 @@ bool SpaceGame::Initialize()
 {
     Game::Initialize();
 
-    bad::Factory::Instance().Register<bad::Actor>("Actor");
-    bad::Factory::Instance().Register<Enemy>("Enemy");
-    bad::Factory::Instance().Register<Bullet>("Bullet");
-    bad::Factory::Instance().Register<Bomb>("Bomb");
-
     m_scene = new bad::Scene();
+    m_scene->SetGame(this);
     m_scene->Load("Assets/Data/stupid.json");
 
     bad::g_audio.Initialize();

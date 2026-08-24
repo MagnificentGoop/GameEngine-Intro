@@ -85,6 +85,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)/Source/ThirdParty/SDL3/lib/$(PlatformTarget)</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(CoreLibraryDependencies);SDL3.lib;SDL3_ttf.lib;SDL3_image.lib</AdditionalDependencies>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -106,6 +107,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)/Source/ThirdParty/SDL3/lib/$(PlatformTarget)</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(CoreLibraryDependencies);SDL3.lib;SDL3_ttf.lib;SDL3_image.lib</AdditionalDependencies>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -125,6 +127,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>$(CoreLibraryDependencies);SDL3.lib;SDL3_ttf.lib;SDL3_image.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)/Source/ThirdParty/SDL3/lib/$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -146,6 +149,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)/Source/ThirdParty/SDL3/lib/$(PlatformTarget)</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(CoreLibraryDependencies);SDL3.lib;SDL3_ttf.lib;SDL3_image.lib</AdditionalDependencies>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>

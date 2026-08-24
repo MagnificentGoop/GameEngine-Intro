@@ -2,6 +2,8 @@
 #include "MathUtils.h"
 #include "Renderer.h"
 
+FACTORY_REGISTER(Bullet)
+
 void Bullet::Update(float dt) {
 	SetVelocity(m_velocity);
 	if (m_startingTime > 0) {

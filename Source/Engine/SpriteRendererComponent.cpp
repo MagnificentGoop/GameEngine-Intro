@@ -1,8 +1,12 @@
 #include "Components/SpriteRendererComponent.h"
 #include "Renderer.h"
 #include "Actor.h"
+#include "Factory.h"
 
 namespace bad {
+
+	FACTORY_REGISTER(SpriteRendererComponent)
+
 	void SpriteRendererComponent::Draw(const Renderer& renderer) const{
 		if (m_texture) {
 			renderer.DrawTexture(*m_texture, GetOwner()->GetTransform());

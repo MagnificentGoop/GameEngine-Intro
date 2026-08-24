@@ -6,6 +6,8 @@
 #include "Assets.h"
 #include "SpaceGame.h"
 
+FACTORY_REGISTER(Player)
+
 void Player::Update(float dt) {
     bad::Vector2<float> velocity{ 1,0 };
     velocity = velocity.Rotate(m_transform.rotation * bad::DegToRad) * m_speed * dt;

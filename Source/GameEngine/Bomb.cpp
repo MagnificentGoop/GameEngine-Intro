@@ -2,6 +2,8 @@
 #include <iostream>
 #include <memory>
 
+FACTORY_REGISTER(Bomb)
+
 void Bomb::Update(float dt){
 	if (m_lifespan <= 0) {
         EXPLOOD();

@@ -10,6 +10,8 @@
 
 namespace bad
 {
+	FACTORY_REGISTER(Actor)
+
 	Actor::Actor(const Actor& other){
 		//TODO, copy things
 	}

@@ -50,14 +50,13 @@ namespace bad {
 					if(prototype){
 						std::string name;
 						JSON_READ(objectValue, name);
-						Factory::Instance().RegisterPrototype<Actor>("PlayerPrototype", std::move(actor)); 
+						Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor)); 
 					}
 					else {
 						AddActor(std::move(actor));
 					}
 				}
 			}
-			//JSON_READ(document, type);
 		}
 		else {
 			return false;

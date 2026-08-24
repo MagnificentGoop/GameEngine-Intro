@@ -3,6 +3,18 @@
 #include "Object.h"
 #include "Singleton.h"
 #include <map>
+#include "StringUtils.h"
+
+#define FACTORY_REGISTER(classname)                                     \
+    class Register##classname                                           \
+    {                                                                   \
+    public:                                                             \
+        Register##classname()                                           \
+        {                                                               \
+            bad::Factory::Instance().Register<classname>(#classname);   \
+        }                                                               \
+    };                                                                  \
+    static Register##classname registerInstance;
 
 namespace bad {
 	class ICreator {
@@ -82,6 +94,7 @@ namespace bad {
 			std::cerr << "Object not derived from type: " << name << std::endl;
 		}
 
+
 		return std::unique_ptr<T>();
 	}
 
@@ -91,8 +104,8 @@ namespace bad {
 	{
 		std::string lowerName = ToLower(name);
 
-		if (!m_registry.contains(lowerName)) {
-			std::cerr << "Object not registered: " << name << std::endl;
+		if (m_registry.contains(lowerName)) {
+			std::cerr << "Object already registered: " << name << std::endl;
 			return;
 		}
 

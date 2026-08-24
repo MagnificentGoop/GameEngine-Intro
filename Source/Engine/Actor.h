@@ -90,7 +90,7 @@ namespace bad
 	inline T* Actor::GetComponent()
 	{
 		for (auto& component : m_components) {
-			dynamic_cast<T*> (component.get());
+			auto result = dynamic_cast<T*> (component.get());
 			if (result) return result;
 		}
 		return nullptr;

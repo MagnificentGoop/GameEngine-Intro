@@ -3,7 +3,8 @@
 
 namespace bad {
 	class ColliderComponent : public Component {
-		virtual bool CheckCollision(const ColliderComponent& other);
+	public:
+		virtual bool CheckCollision(const ColliderComponent& other) = 0;
 		virtual void Read(const json::value_t& value);
 	};
 }
