@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Vector2.h"
+#include "Math/Vector2.h"
 #include <SDL3/SDL.h>
 namespace bad {
 	class Input {

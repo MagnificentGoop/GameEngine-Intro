@@ -1,7 +1,7 @@
 #pragma once
 #include <rapidjson/document.h>
 #include <string>
-#include "Color.h"
+#include "Math/Color.h"
 #include <iostream>
 #include <vector>
 

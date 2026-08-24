@@ -17,6 +17,9 @@
     <Filter Include="Assets\Data">
       <UniqueIdentifier>{5525ade1-0339-4d4e-afe6-fec5dfff706e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Animations">
+      <UniqueIdentifier>{3498114a-179c-4c49-82ac-9c4afa300475}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -73,6 +76,9 @@
     </None>
     <None Include="..\..\Build\Assets\Data\stupid.json">
       <Filter>Assets\Data</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Animations\bat_idle.json">
+      <Filter>Assets\Animations</Filter>
     </None>
   </ItemGroup>
 </Project>

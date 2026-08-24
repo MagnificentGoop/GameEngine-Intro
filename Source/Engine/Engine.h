@@ -6,7 +6,7 @@
 
 //Includes for others
 #include "Scene.h"
-#include "MathUtils.h"
+#include "Math/MathUtils.h"
 #include "Random.h"
 #include "Text.h"
 #include "ParticleSystem.h"

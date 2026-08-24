@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Renderer.h"
-#include "MathUtils.h"
+#include "Math/MathUtils.h"
 #include "Texture.h"
 
 namespace bad

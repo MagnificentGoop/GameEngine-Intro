@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL3/SDL.h>
 #include "Model.h"
-#include "Transform2D.h"
+#include "Math/Transform2D.h"
 #include <SDL3_ttf/SDL_ttf.h>
 
 namespace bad
@@ -58,8 +58,10 @@ namespace bad
 			void DrawModel(const Model& model, const Transform2D& transform) const;
 
 			void DrawTexture(const class Texture& texture, float x, float y) const;
-			void DrawTexture(const class Texture& texture, float x, float y, float angle, const Vector2<float>& scale = {1.0f, 1.0f}, bool flipH = false) const;
+			void DrawTexture(const class Texture& texture, float x, float y, float angle, const Vector2<float>& scale = { 1.0f, 1.0f }, bool flipH = false) const;
 			void DrawTexture(const Texture& texture, const Transform2D& transform, bool flipH = false) const;
+
+			void DrawTexture(const class Texture& texture, const struct Rect& sourece, float x, float y, float angle, const Vector2<float>& scale = { 1.0f, 1.0f }, bool flipH = false) const;
 
 			void Render();
 			void DestroyRenderer();

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
-#include "Color.h"
+#include "Math/Color.h"
+
 namespace bad {
 	class Mesh{
 	public:

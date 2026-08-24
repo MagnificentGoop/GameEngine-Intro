@@ -18,4 +18,10 @@
 
 #include <rapidjson/istreamwrapper.h>
 #include <rapidjson/error/en.h>
+
+#include "Math/MathUtils.h"
+#include "Math/Color.h"
+#include "Math/Rect.h"
+#include "Math/Transform2D.h"
+
 #endif PCH_H

@@ -1,6 +1,6 @@
 #pragma once
 #include "Font.h"
-#include "Color.h"
+#include "Math/Color.h"
 #include "Object.h"
 
 struct SDL_Texture;

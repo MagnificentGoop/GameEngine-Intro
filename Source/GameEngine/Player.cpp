@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Renderer.h"
 #include "Engine.h"
-#include "MathUtils.h"
+#include "Math/MathUtils.h"
 #include "Bomb.h"
 #include "Assets.h"
 #include "SpaceGame.h"

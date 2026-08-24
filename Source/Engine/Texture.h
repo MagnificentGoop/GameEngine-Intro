@@ -1,5 +1,5 @@
 #pragma once
-#include "Color.h"
+#include "Math/Color.h"
 #include "Resource.h"
 
 struct SDL_Texture;
