@@ -204,6 +204,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Json.h" />
     <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="Math\Rect.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ParticleSystem.h" />

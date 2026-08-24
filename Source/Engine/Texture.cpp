@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "Texture.h"
-#include <iostream>
-#include <SDL3_image/SDL_image.h>
 #include "Engine.h"
 
 namespace bad {

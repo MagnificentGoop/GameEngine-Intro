@@ -1,1 +1,21 @@
-#pragma once
+#ifndef PCH_H
+#define PCH_H
+#include <array>
+#include <vector>
+#include <list>
+#include <map>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <memory>
+#include <algorithm>
+#include <string>
+
+#include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
+#include <SDL3_ttf/SDL_ttf.h>
+#include <fmod.hpp>
+
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/error/en.h>
+#endif PCH_H
