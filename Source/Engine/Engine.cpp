@@ -12,9 +12,11 @@ namespace bad {
 		}
 		g_audio.Initialize();
 		m_particleSystem.Initialize(5000);
+		m_physics.Initialize();
 		return true;
 	}
 	void Engine::Shutdown(){
+		m_physics.Shutdown();
 		Resources().RemoveAll();
 		m_particleSystem.Shutdown();
 		g_audio.Shutdown();
@@ -32,5 +34,7 @@ namespace bad {
 		g_time.Tick();
 		g_audio.Update();
 		m_particleSystem.Update();
+		m_physics.Update(g_time.GetDeltaTime());
+
 	}
 }

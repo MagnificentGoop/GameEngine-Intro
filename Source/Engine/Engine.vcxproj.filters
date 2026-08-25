@@ -24,6 +24,9 @@
     <Filter Include="Renderer">
       <UniqueIdentifier>{07f497c1-00d0-41bb-93be-9fd421b5989a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{d2a8abfd-4034-461b-8682-3996155ef9b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Object.cpp">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="Renderer\TextureFrames.cpp">
       <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Physics.cpp">
+      <Filter>Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +207,9 @@
     </ClInclude>
     <ClInclude Include="Renderer\TextureFrames.h">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Physics.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

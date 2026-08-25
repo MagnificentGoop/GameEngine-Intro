@@ -17,6 +17,8 @@
 #include "StringUtils.h"
 #include "Factory.h"
 
+#include "Physics/Physics.h"
+
 #include <iostream>
 
 namespace bad{
@@ -34,11 +36,14 @@ namespace bad{
 		bool GetIfQuit() { return m_quit; }
 
 		ParticleSystem& GetPS() { return m_particleSystem; }
+
+		Physics& GetPhysics() { return m_physics; }
 	private:
 		Engine() = default;
 		Input m_input;
 		Renderer m_renderer;
 		ParticleSystem m_particleSystem;
+		Physics m_physics;
 
 		bool m_quit = false;
 	};
