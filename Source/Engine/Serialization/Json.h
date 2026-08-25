@@ -47,7 +47,10 @@ namespace bad::json
 		// check if the value has the "<name>" and is an array with 2 elements
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 2)
 		{
+			if (req) {
 			std::cerr << "Could not read JSON value (Vector2):" << name << std::endl;
+
+			}
 			return false;
 		}
 
@@ -56,9 +59,12 @@ namespace bad::json
 		// get array values, iterate through each element
 		for (rapidjson::SizeType i = 0; i < array.Size(); i++)
 		{
-			if (!array[i].IsNumber() && req)
+			if (!array[i].IsNumber())
 			{
+				if (req) {
 				std::cerr << "Could not read JSON value (Vector2):" << name << std::endl;
+
+				}
 				return false;
 			}
 
@@ -72,9 +78,12 @@ namespace bad::json
 	bool Read(const value_t& value, const std::string& name, Vector3<T>& data, bool req)
 	{
 		// check if the value has the "<name>" and is an array with 3 elements
-		if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 3) && req)
+		if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 3))
 		{
+			if (req) {
 			std::cerr << "Could not read JSON value (Vector3):" << name << std::endl;
+
+			}
 			return false;
 		}
 
@@ -83,9 +92,12 @@ namespace bad::json
 		// get array values, iterate through each element
 		for (rapidjson::SizeType i = 0; i < array.Size(); i++)
 		{
-			if (!array[i].IsNumber() && req)
+			if (!array[i].IsNumber())
 			{
+				if (req) {
 				std::cerr << "Could not read JSON value (Vector3):" << name << std::endl;
+
+				}
 				return false;
 			}
 

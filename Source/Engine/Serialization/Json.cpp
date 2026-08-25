@@ -44,9 +44,11 @@ namespace bad::json
     bool Read(const value_t& value, const std::string& name, int& data, bool req)
     {
         // check if the value has the "<name>" and the correct data type
-        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsInt()) && req)
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsInt()))
         {
-            std::cerr << "Could not read JSON value (int):" << name << std::endl;
+            if (req) {
+                std::cerr << "Could not read JSON value (int):" << name << std::endl;
+            }
             return false;
         }
 
@@ -59,9 +61,11 @@ namespace bad::json
     bool Read(const value_t& value, const std::string& name, unsigned int& data, bool req)
     {
         // check if the value has the "<name>" and the correct data type
-        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsUint()) && req)
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsUint()))
         {
-            std::cerr << "Could not read JSON value (int):" << name << std::endl;
+            if (req) {
+                std::cerr << "Could not read JSON value (int):" << name << std::endl;
+            }
             return false;
         }
 
@@ -73,8 +77,11 @@ namespace bad::json
 
     bool Read(const value_t& value, const std::string& name, float& data, bool req)
     {
-        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber()) && req) {
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber())) {
+            if (req) {
             std::cerr << "Could not read JSON value (float):" << name << std::endl;
+
+            }
             return false;
         }
 
@@ -85,9 +92,12 @@ namespace bad::json
     bool Read(const value_t& value, const std::string& name, bool& data, bool req)
     {
         // check if the value has the "<name>" and the correct data type
-        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsBool()) && req)
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsBool()))
         {
+            if (req) {
             std::cerr << "Could not read JSON value (bool):" << name << std::endl;
+
+            }
             return false;
         }
 
@@ -98,8 +108,11 @@ namespace bad::json
     }
     bool Read(const value_t& value, const std::string& name, std::string& data, bool req)
     {
-        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsString()) && req) {
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsString())) {
+            if (req) {
             std::cerr << "Could not read JSON value (string):" << name << std::endl;
+
+            }
             return false;
         }
 
@@ -110,9 +123,12 @@ namespace bad::json
     bool Read(const value_t& value, const std::string& name, std::vector<int>& data, bool req)
     {
         // check if the value has the "<name>" and the correct data type
-        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray()) && req)
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray()))
         {
+            if (req) {
             std::cerr << "Could not read JSON value (int[]):" << name << std::endl;
+
+            }
             return false;
         }
 
@@ -122,9 +138,12 @@ namespace bad::json
 
         for (const auto& element : array.GetArray())
         {
-            if (!element.IsInt() && req)
+            if (!element.IsInt())
             {
+                if (req) {
                 std::cerr << "Could not read JSON value (int[]):" << name << std::endl;
+
+                }
                 return false;
             }
 
@@ -136,9 +155,12 @@ namespace bad::json
     bool Read(const value_t& value, const std::string& name, std::vector<float>& data, bool req)
     {
         // check if the value has the "<name>" and the correct data type
-        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray()) && req)
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray()))
         {
+            if (req) {
             std::cerr << "Could not read JSON value (float[]):" << name << std::endl;
+
+            }
             return false;
         }
 
@@ -148,9 +170,12 @@ namespace bad::json
 
         for (const auto& element : array.GetArray())
         {
-            if (!element.IsFloat() && req)
+            if (!element.IsFloat())
             {
+                if (req) {
                 std::cerr << "Could not read JSON value (float[]):" << name << std::endl;
+
+                }
                 return false;
             }
 
@@ -164,7 +189,10 @@ namespace bad::json
         // check if the value has the "<name>" and the correct data type
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray())
         {
+            if (req) {
             std::cerr << "Could not read JSON value (bool[]):" << name << std::endl;
+
+            }
             return false;
         }
 
@@ -176,7 +204,10 @@ namespace bad::json
         {
             if (!element.IsBool())
             {
+                if (req) {
                 std::cerr << "Could not read JSON value (bool[]):" << name << std::endl;
+
+                }
                 return false;
             }
 
@@ -185,12 +216,15 @@ namespace bad::json
 
         return true;
     }
-    bool Read(const value_t& value, const std::string& name, std::vector<std::string>& data)
+    bool Read(const value_t& value, const std::string& name, std::vector<std::string>& data, bool req)
     {
         // check if the value has the "<name>" and the correct data type
-        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray())
+        if ((!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray()))
         {
+            if (req) {
             std::cerr << "Could not read JSON value (std::string[]):" << name << std::endl;
+
+            }
             return false;
         }
 
@@ -202,7 +236,10 @@ namespace bad::json
         {
             if (!element.IsString())
             {
+                if (req) {
                 std::cerr << "Could not read JSON value (std::string[]):" << name << std::endl;
+
+                }
                 return false;
             }
 

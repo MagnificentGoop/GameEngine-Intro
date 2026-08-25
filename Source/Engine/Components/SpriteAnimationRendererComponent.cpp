@@ -4,11 +4,14 @@
 #include "Resources/ResourceManager.h"
 #include "Renderer/TextureFrames.h"
 #include "Framework/Actor.h"
+#include "Engine.h"
 
 namespace bad {
 	FACTORY_REGISTER(SpriteAnimationRendererComponent)
 
 	void SpriteAnimationRendererComponent::Update(float dt) {
+		if (!m_textureFrames) return;
+
 		m_frameTimer += dt;
 		float frameTime = 1.0f / m_framesPerSecond;
 		while (m_frameTimer > frameTime) {
@@ -46,7 +49,7 @@ namespace bad {
 		JSON_READ_NAME_REQ(value, "texture_frames", textureFrameName);
 
 		if (!textureFrameName.empty()) {
-			m_textureFrames = Resources().Get<TextureFrames>(textureFrameName);
+			m_textureFrames = Resources().Get<TextureFrames>(textureFrameName, Engine::Get().GetRenderer());
 		}
 	}
 }
