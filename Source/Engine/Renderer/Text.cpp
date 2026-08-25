@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "Text.h"
-#include <SDL3_ttf/SDL_ttf.h>
-#include <iostream>
 #include "Renderer.h"
 #include "Engine.h"
 

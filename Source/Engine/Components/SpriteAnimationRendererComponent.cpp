@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "SpriteAnimationRendererComponent.h"
-#include "Factory.h"
-#include "ResourceManager.h"
+#include "Core/Factory.h"
+#include "Resources/ResourceManager.h"
 #include "Renderer/TextureFrames.h"
-#include "Actor.h"
+#include "Framework/Actor.h"
 
 namespace bad {
 	FACTORY_REGISTER(SpriteAnimationRendererComponent)

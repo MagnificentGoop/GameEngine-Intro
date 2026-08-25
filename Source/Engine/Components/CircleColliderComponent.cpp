@@ -1,6 +1,6 @@
 #include "CircleColliderComponent.h"
-#include "Factory.h"
-#include "Actor.h"
+#include "Core/Factory.h"
+#include "Framework/Actor.h"
 
 namespace bad {
 

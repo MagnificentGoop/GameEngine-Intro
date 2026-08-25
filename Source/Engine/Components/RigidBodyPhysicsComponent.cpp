@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "RigidBodyPhysicsComponent.h"
-#include "Actor.h"
+#include "Framework/Actor.h"
 
 namespace bad {
 	FACTORY_REGISTER(RigidBodyPhysicsComponent);

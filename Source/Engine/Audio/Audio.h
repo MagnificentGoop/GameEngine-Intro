@@ -2,7 +2,7 @@
 #include <fmod.hpp>
 #include <string>
 #include <map>
-#include "Resource.h"
+#include "Resources/Resource.h"
 
 namespace bad
 {

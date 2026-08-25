@@ -4,10 +4,10 @@
 #include <memory>
 
 #include "Math/Transform2D.h"
-#include "Model.h"
-#include "Resource.h"
+#include "Renderer/Model.h"
+#include "Resources/Resource.h"
 
-#include "Component.h"
+#include "Components/Component.h"
 #include "Object.h"
 
 

@@ -1,7 +1,7 @@
 #include "Components/SpriteRendererComponent.h"
-#include "Renderer.h"
-#include "Actor.h"
-#include "Factory.h"
+#include "Renderer/Renderer.h"
+#include "Framework/Actor.h"
+#include "Core/Factory.h"
 
 namespace bad {
 

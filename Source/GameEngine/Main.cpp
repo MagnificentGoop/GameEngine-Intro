@@ -1,6 +1,6 @@
 #include "Engine.h"
 #include "SpaceGame.h"
-#include "Actor.h"
+#include "Framework/Actor.h"
 
 int main()
 {

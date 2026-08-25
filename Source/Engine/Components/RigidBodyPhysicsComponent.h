@@ -1,6 +1,6 @@
 #pragma once
 #include "PhysicsComponent.h"
-#include "Factory.h"
+#include "Core/Factory.h"
 
 namespace bad {
 	class RigidBodyPhysicsComponent : public PhysicsComponent {

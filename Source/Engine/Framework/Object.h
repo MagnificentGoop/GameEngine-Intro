@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Model.h"
-#include "Renderer.h"
+#include "Renderer/Model.h"
+#include "Renderer/Renderer.h"
 #include <string>
 #include <memory>
-#include "ResourceManager.h"
-#include "Json.h"
+#include "Resources/ResourceManager.h"
+#include "Serialization/Json.h"
 
 #define CLASS_PROTOTYPE(classname) virtual std::unique_ptr<Object> Clone() const { return std::make_unique<classname>(*this); }
 

@@ -1,8 +1,8 @@
 #pragma once
-#include "Game.h"
-#include "Text.h"
-#include "Font.h"
-#include "ResourceManager.h"
+#include "Framework/Game.h"
+#include "Renderer/Text.h"
+#include "Renderer/Font.h"
+#include "Resources/ResourceManager.h"
 
 class SpaceGame : public bad::Game {
 public:

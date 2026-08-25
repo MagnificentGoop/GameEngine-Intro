@@ -2,9 +2,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "Engine.h"
-#include "Factory.h"
-#include <iostream>
-#include <iterator>
+#include "Core/Factory.h"
 #include "Components/ColliderComponent.h"
 
 namespace bad {

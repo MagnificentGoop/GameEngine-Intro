@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include <windows.h>
-#include "Gametime.h"
-#include "ParticleSystem.h"
+#include "Core/Gametime.h"
+#include "Renderer/ParticleSystem.h"
 
 namespace bad {
 	Audio g_audio;
