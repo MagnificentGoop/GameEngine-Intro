@@ -9,11 +9,14 @@ namespace bad {
 	public:
 		bool Load(const std::string& filename, class Renderer& renderer);
 		Rect GetFrameRect(unsigned int frame);
+		res_t<class Texture> GetTexture() const { return m_texture; }
+
+		unsigned int GetTotalFrames() const { return m_totalFrames; }
 	private:
-		int m_numColumns = 0;
-		int m_numRows = 0;
-		int m_startFrame = 0;
-		int m_totalFrames = 0;
+		unsigned int m_numColumns = 0;
+		unsigned int m_numRows = 0;
+		unsigned int m_startFrame = 0;
+		unsigned int m_totalFrames = 0;
 
 		Vector2<float> m_frameSize = { 0,0 };
 		res_t<class Texture> m_texture;

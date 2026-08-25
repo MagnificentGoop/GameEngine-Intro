@@ -8,9 +8,9 @@ namespace bad {
 		Vector2<float> scale;
 
 		void Read(const json::value_t& value) {
-			JSON_READ(value, position);
-			JSON_READ(value, rotation);
-			JSON_READ(value, scale);
+			JSON_READ_REQ(value, position);
+			JSON_READ_REQ(value, rotation);
+			JSON_READ_REQ(value, scale);
 		}
 	};
 }

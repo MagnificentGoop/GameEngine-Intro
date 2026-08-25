@@ -12,9 +12,6 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{426c76d7-8a1d-4070-af57-d85e20066824}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components headers">
-      <UniqueIdentifier>{80bb106e-7c12-474e-bb5c-db18bf419fdf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components cpp">
       <UniqueIdentifier>{c8e7f0e7-9105-4530-902c-fa576626b334}</UniqueIdentifier>
     </Filter>
@@ -26,6 +23,9 @@
     </Filter>
     <Filter Include="Physics">
       <UniqueIdentifier>{d2a8abfd-4034-461b-8682-3996155ef9b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{80bb106e-7c12-474e-bb5c-db18bf419fdf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,15 @@
     </ClCompile>
     <ClCompile Include="Physics\Physics.cpp">
       <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\SpriteAnimationRendererComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\PhysicsComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\RigidBodyPhysicsComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,19 +173,19 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Components\RendererComponent.h">
-      <Filter>Components headers</Filter>
+      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\SpriteRendererComponent.h">
-      <Filter>Components headers</Filter>
+      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Components\ColliderComponent.h">
-      <Filter>Components headers</Filter>
+      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\CircleColliderComponent.h">
-      <Filter>Components headers</Filter>
+      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Math\MathUtils.h">
       <Filter>Math</Filter>
@@ -210,6 +219,15 @@
     </ClInclude>
     <ClInclude Include="Physics\Physics.h">
       <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteAnimationRendererComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\PhysicsComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\RigidBodyPhysicsComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

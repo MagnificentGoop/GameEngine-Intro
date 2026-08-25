@@ -61,8 +61,8 @@ namespace bad
 	{
 		Object::Read(value);
 
-		JSON_READ_NAME(value, "lifespan", m_lifespan);
-		JSON_READ_NAME(value, "damping", m_damping);
+		JSON_READ_NAME_REQ(value, "lifespan", m_lifespan);
+		JSON_READ_NAME_REQ(value, "damping", m_damping);
 
 		if (JSON_HAS_NAME(value, "transform")) {
 			m_transform.Read(JSON_GET_NAME(value, "transform"));
@@ -71,12 +71,13 @@ namespace bad
 		if (JSON_HAS_NAME(value, "components")) {
 			for (auto& componentValue : JSON_GET_NAME(value, "components").GetArray()) {
 				std::string typeName;
-				JSON_READ_NAME(componentValue, "type", typeName);
+				JSON_READ_NAME_REQ(componentValue, "type", typeName);
 
 				auto component = Factory::Instance().Create<Component>(typeName);
 
 				if (component) {
 					component->Read(componentValue);
+					AddComponent(std::move(component));
 				}
 			}
 		}

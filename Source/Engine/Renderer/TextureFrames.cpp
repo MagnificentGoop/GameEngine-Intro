@@ -25,10 +25,10 @@ namespace bad {
 			return false;
 		}
 
-		JSON_READ_NAME(document, "columns", m_numColumns);
-		JSON_READ_NAME(document, "rows", m_numRows);
-		JSON_READ_NAME(document, "startFrame", m_startFrame);
-		JSON_READ_NAME(document, "totalFrames", m_totalFrames);
+		JSON_READ_NAME_REQ(document, "columns", m_numColumns);
+		JSON_READ_NAME_REQ(document, "rows", m_numRows);
+		JSON_READ_NAME_REQ(document, "startFrame", m_startFrame);
+		JSON_READ_NAME_REQ(document, "totalFrames", m_totalFrames);
 
 		if (m_numColumns <= 0 || m_numRows <= 0) {
 			std::cerr << "Texture Frame Rows or Colums are 0" << std::endl;

@@ -34,7 +34,7 @@ namespace bad {
 				for (auto& objectValue : JSON_GET_NAME(document, "actors").GetArray())
 				{
 					std::string typeName;
-					JSON_READ_NAME(objectValue, "type", typeName);
+					JSON_READ_NAME_REQ(objectValue, "type", typeName);
 
 					auto actor = Factory::Instance().Create<Actor>(typeName);
 					if (!actor)
@@ -45,11 +45,11 @@ namespace bad {
 					actor->Read(objectValue);
 
 					bool prototype = false;
-					JSON_READ(objectValue, prototype);
+					JSON_READ_REQ(objectValue, prototype);
 					
 					if(prototype){
 						std::string name;
-						JSON_READ(objectValue, name);
+						JSON_READ_REQ(objectValue, name);
 						Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor)); 
 					}
 					else {

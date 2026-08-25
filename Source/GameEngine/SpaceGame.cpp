@@ -19,11 +19,11 @@ bool SpaceGame::Initialize()
     bad::g_audio.AddSound("bomb", "Assets/Sounds/bomb_lazer.mp3");
     bad::g_audio.AddSound("boom", "Assets/Sounds/boom.mp3");
 
-    m_titleText = std::make_shared<bad::Text>(bad::Resources().SetWithID<bad::Font>("font64", "Assets/Fonts/font.ttf", 64));
+    m_titleText = std::make_shared<bad::Text>(bad::Resources().GetWithID<bad::Font>("font64", "Assets/Fonts/font.ttf", 64));
     m_titleText->Create("AHHHH..", bad::Color8{ 255, 255, 255 });
 
-    m_scoreText = new bad::Text(bad::Resources().SetWithID<bad::Font>("font32", "Assets/Fonts/font.ttf", 32));
-    m_livesText = new bad::Text(bad::Resources().GetWithID<bad::Font>("font32"));
+    m_scoreText = new bad::Text(bad::Resources().GetWithID<bad::Font>("font32", "Assets/Fonts/font.ttf", 32));
+    m_livesText = new bad::Text(bad::Resources().GetWithID<bad::Font>("font32", "Assets/Fonts/font.ttf", 32));
     return true;
 }
 

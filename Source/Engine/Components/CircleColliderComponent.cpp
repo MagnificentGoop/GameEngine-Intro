@@ -17,6 +17,6 @@ namespace bad {
 	{
 		ColliderComponent::Read(value);
 
-		JSON_READ_NAME(value, "radius", m_radius);
+		JSON_READ_NAME_REQ(value, "radius", m_radius);
 	}
 }
