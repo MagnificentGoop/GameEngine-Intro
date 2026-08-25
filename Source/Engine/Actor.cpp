@@ -12,9 +12,19 @@ namespace bad
 {
 	FACTORY_REGISTER(Actor)
 
-	Actor::Actor(const Actor& other){
-		//TODO, copy things
-	}
+		Actor::Actor(const Actor& other) :
+		Object{ other },
+		m_transform{ other.m_transform },
+		m_damping{ other.m_damping },
+		m_lifespan{ other.m_lifespan },
+		m_speed{ other.m_speed }
+		{
+			for (const auto& component : other.m_components)
+			{
+				auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+			}
+		};
+
 	void Actor::Update(float dt)
 	{
 			if (m_destroyed) {
@@ -50,7 +60,6 @@ namespace bad
 	void Actor::Read(const json::value_t& value)
 	{
 		Object::Read(value);
-
 
 		JSON_READ_NAME(value, "lifespan", m_lifespan);
 		JSON_READ_NAME(value, "damping", m_damping);

@@ -164,6 +164,10 @@ namespace bad
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, transform.rotation, NULL, flipH ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 
+    void Renderer::DrawTexture(const Texture& texture, const Rect& sourece, float x, float y, float angle, const Vector2<float>& scale, bool flipH) const{
+
+    }
+
     void Renderer::Render() {
 		SDL_RenderPresent(m_renderer);
     }

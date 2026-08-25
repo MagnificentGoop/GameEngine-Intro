@@ -25,7 +25,9 @@ namespace bad {
 			m_tags{ a.tags } {};
 		~Object() {};
 
-		CLASS_PROTOTYPE(Object)
+		CLASS_PROTOTYPE(Object);
+
+		Object(const Object& other);
 
 		const void SetName(const std::string& s) { m_name = s; }
 		const std::string& GetName() const { return m_name; }

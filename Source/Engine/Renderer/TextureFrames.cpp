@@ -19,7 +19,7 @@ namespace bad {
 			return false;
 		}
 
-		m_texture = Resources().Get<Texture>(textureName, renderer);
+		m_texture = Resources().Get<Texture>(textureName);
 		if (!m_texture) {
 			std::cerr << "Could not load Texture Frame texture: " << textureName << std::endl;
 			return false;
@@ -36,7 +36,7 @@ namespace bad {
 		}
 
 		Vector2<float> textureSize = m_texture->GetSize();
-		m_frameSize = textureSize / Vector2<float>{m_numColumns, m_numRows};
+		m_frameSize = textureSize / Vector2<float>{(float)m_numColumns, (float)m_numRows};
 		return true;
 	}
 
