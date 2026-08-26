@@ -51,4 +51,10 @@ namespace bad {
 		JSON_READ_NAME(value, "velocity", m_velocity);
 		JSON_READ_NAME(value, "angular_velocity", m_angularVelocity);
 	}
+	void RigidBodyPhysicsComponent::SetRotation(float rotation){
+		GetOwner()->SetRotation(rotation);
+	}
+	float RigidBodyPhysicsComponent::GetRotation() const{
+		return GetOwner()->GetRotation();
+	}
 }

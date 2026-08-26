@@ -21,9 +21,6 @@ void Bomb::EXPLOOD(){
         desc.bulletDesc.object.tags.push_back("PlayerBullet");
         desc.bulletDesc.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {1,1} };
         desc.bulletDesc.object.lifespan = 1;
-        desc.bulletDesc.velocity = { bad::RandomFloat(-140,140), bad::RandomFloat(-150,150) };
-        desc.bulletDesc.speed = bad::RandomFloat(900, 1100);
-        desc.bulletDesc.damping = 1.0f;
 
 
         m_scene->AddActor(std::make_unique<Bullet>(desc));

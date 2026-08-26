@@ -8,8 +8,8 @@ namespace bad {
 		Component() = default;
 		virtual ~Component() = default;
 
-		virtual void Start() {}
-		virtual void Distroyed() {}
+		virtual void Start() {};
+		virtual void OnDestroy() {};
 		virtual void Update(float dt) {}
 
 		Actor* GetOwner() const { return m_owner; }

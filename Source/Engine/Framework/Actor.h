@@ -20,10 +20,7 @@ namespace bad
 	struct ActorDesc
 	{
 		Transform2D transform{ {0.0, 0.0}, 0.0, {1.0,1.0} };
-		Vector2<float> velocity{ 0,0 };
-		float damping = 0.0f;
 		ObjectDesc object;
-		float speed = 10000;
 	};
 
 	class Actor : public Object
@@ -31,9 +28,7 @@ namespace bad
 	public:
 		Actor() = default;
 		Actor(const ActorDesc& ad) :
-			m_transform{ ad.transform },
-			m_velocity{ ad.velocity },
-			m_damping{ ad.damping } {};
+			m_transform{ ad.transform } {};
 
 		CLASS_PROTOTYPE(Actor);
 
@@ -41,6 +36,9 @@ namespace bad
 
 		virtual void Update(float dt);
 		virtual void Draw(const Renderer& renderer) const;
+
+		virtual void Start();
+		virtual void OnDestroy();
 
 		virtual void OnCollision(Actor* other) {}
 
@@ -57,10 +55,6 @@ namespace bad
 		void SetScale(Vector2<float> scale) { m_transform.scale = scale; }
 		Vector2<float> GetScale() const { return m_transform.scale; }
 
-		const Vector2<float>& GetVelocity() const { return m_velocity; }
-		void SetVelocity(const Vector2<float>& velocity) { m_velocity = velocity; }
-		void AddVelocity(const Vector2<float>& velocity) { m_velocity += velocity; }
-
 		float GetRadius() const;
 		virtual void OnCollision(bad::Object* other);
 
@@ -76,15 +70,13 @@ namespace bad
 
 	protected:
 		Transform2D m_transform;
-		Vector2<float> m_velocity{ 0,0 };
-		float m_damping = 0.0f;
 		float m_lifespan = -1.0f;
-		float m_speed = 20.0f;
 
 		std::vector<res_t<Component>> m_components;
 
 		Scene* m_scene = nullptr;
 	};
+
 	template<std::derived_from<Component> T>
 
 	inline T* Actor::GetComponent()

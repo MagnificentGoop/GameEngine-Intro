@@ -5,48 +5,47 @@
 #include "Bomb.h"
 #include "Assets.h"
 #include "SpaceGame.h"
+#include "Components/Box2DPhysicsComponent.h"
 
 FACTORY_REGISTER(Player)
 
 void Player::Update(float dt) {
-    bad::Vector2<float> velocity{ 1,0 };
-    velocity = velocity.Rotate(m_transform.rotation * bad::DegToRad) * m_speed * dt;
+    float thrust = 0.0f;
+    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_W)) thrust = m_speed; 
+    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_S)) thrust = -m_speed;
 
-    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_W)) AddVelocity(velocity);
-    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_S)) AddVelocity(bad::Vector2<float>{-1,-1} * velocity);
-    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_D)) AddRotation(180 * dt);
-    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_A)) AddRotation(-180 * dt);
-    if (bad::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_F)) {
-        BulletDesc desc;
+    float rotate = 0.0f;
+    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_D)) rotate = 1000.0f;
+    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_A)) rotate = -1000.0f;
+
+    bad::PhysicsComponent* physicsComponent = GetComponent<bad::PhysicsComponent>();
+    if (physicsComponent) {
         bad::Vector2<float> forward{ 1,0 };
-        desc.bulletDesc.object.name = "Bullet";
-        desc.bulletDesc.object.tags.push_back("PlayerBullet");
-        desc.bulletDesc.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
-        desc.bulletDesc.velocity = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed;
-        desc.bulletDesc.object.lifespan = 5;
-        desc.bulletDesc.speed = 1000;
-        desc.bulletDesc.damping = 1.0f;
+        bad::Vector2<float> force = forward.Rotate(m_transform.rotation * bad::DegToRad) * thrust;
 
-        m_scene->AddActor(std::make_unique<Bullet>(desc));
-        ((SpaceGame*)m_scene->GetGame())->AddPoints(1);
+        physicsComponent->ApplyForce(force);
+        physicsComponent->ApplyTorque(rotate);
+
+        bad::Vector2<float> position = physicsComponent->GetPosition();
+
+        position.x = bad::Wrap(position.x, 0.0f, bad::Engine::Get().GetRenderer().GetWidth());
+        position.y = bad::Wrap(position.y, 0.0f, bad::Engine::Get().GetRenderer().GetHeight());
+
+
+    }
+
+    if (bad::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_F)) {
+        auto object = bad::Factory::Instance().Create<Bullet>("bulletPrototype");
+        object->SetTransform(this->GetTransform());
+        m_scene->AddActor(std::move(object));
+
         bad::g_audio.PlaySound("bullet");
 
     }
     if (bad::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_SPACE)) {
-        BombDesc desc;
-        bad::Vector2<float> forward{ 1,0 };
-
-        desc.bulletDesc.bulletDesc.object.name = "Bomb";
-        desc.bulletDesc.bulletDesc.object.tags.push_back("PlayerBomb");
-        desc.bulletDesc.bulletDesc.transform = bad::Transform2D{ m_transform.position, m_transform.rotation, {3,3} };
-        desc.bulletDesc.bulletDesc.object.lifespan = 1;
-        desc.bulletDesc.bulletDesc.speed = 1000;
-        desc.bulletDesc.bulletDesc.velocity = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed / 2;
-        desc.bulletDesc.bulletDesc.damping = 0.16f;
-        desc.shrapnelAmount = 20;
-
-        m_scene->AddActor(std::make_unique<Bomb>(desc));
-        ((SpaceGame*)m_scene->GetGame())->AddPoints(5);
+        auto object = bad::Factory::Instance().Create<Bomb>("bombPrototype");
+        object->SetTransform(this->GetTransform());
+        m_scene->AddActor(std::move(object));
 
         bad::g_audio.PlaySound("bomb");
     }
@@ -65,4 +64,10 @@ void Player::OnCollision(Object* other)
             ((SpaceGame*)m_scene->GetGame())->OnPlayerDead();
         }
     }
+}
+
+void Player::Read(const bad::json::value_t& value){
+    Actor::Read(value);
+
+    JSON_READ_NAME_REQ(value, "speed", m_speed);
 }

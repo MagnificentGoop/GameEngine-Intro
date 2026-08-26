@@ -114,17 +114,11 @@ void SpaceGame::OnPlayerDead(){
 }
 
 void SpaceGame::SpawnPlayer(){
-    auto object = bad::Factory::Instance().Create<bad::Actor>("PlayerPrototype");
+    auto object = bad::Factory::Instance().Create<Player>("PlayerPrototype");
 
     m_scene->AddActor(std::move(object));
 }
 
 void SpaceGame::SpawnEnemy(){
-    EnemyDesc e;
-    e.enemyDesc.object.name = "Enemy";
-    e.enemyDesc.speed = 500.0f;
-    e.enemyDesc.transform = { {bad::RandomFloat(bad::Engine::Get().GetRenderer().GetWidth()),bad::RandomFloat(bad::Engine::Get().GetRenderer().GetHeight())},0.0f, {2,2} };
-    Enemy* enemy = new Enemy{ e };
-    enemy->AddTag("Death");
-    m_scene->AddActor(std::unique_ptr<Enemy>(enemy));
+    //TODO: Spawn Enemy
 }

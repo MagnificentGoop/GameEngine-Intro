@@ -15,13 +15,18 @@ namespace bad
 		Actor::Actor(const Actor& other) :
 		Object{ other },
 		m_transform{ other.m_transform },
-		m_damping{ other.m_damping },
-		m_lifespan{ other.m_lifespan },
-		m_speed{ other.m_speed }
+		m_lifespan{ other.m_lifespan }
 		{
 			for (const auto& component : other.m_components)
 			{
-				auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+				//auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+
+				auto clone = component->Clone();
+
+				if (clone)
+				{
+					AddComponent(std::unique_ptr<Component>(dynamic_cast<Component*>(clone.release())));
+				}
 			}
 		};
 
@@ -37,16 +42,32 @@ namespace bad
 			component->Update(dt);
 		}
 
-		m_transform.position += (m_velocity * dt);
-		m_velocity *= (1.0f / (1.0f + m_damping * dt));
-
-		m_transform.position.x = Wrap(m_transform.position.x, 0.0f, Engine::Get().GetRenderer().GetWidth());
-		m_transform.position.y = Wrap(m_transform.position.y, 0.0f, Engine::Get().GetRenderer().GetHeight());
+		//m_transform.position += (m_velocity * dt);
+		//m_velocity *= (1.0f / (1.0f + m_damping * dt));
 	}
 
 	void Actor::Draw(const Renderer& renderer) const
 	{
-		
+		for (auto component : m_components) {
+			//check if component is renderer component
+			auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
+			if (rendererComponent) {
+				//draw
+				rendererComponent->Draw(renderer);
+			}
+		}
+	}
+
+	void Actor::Start(){
+		for (auto& sadness : m_components) {
+			sadness->Start();
+		}
+	}
+
+	void Actor::OnDestroy(){
+		for (auto& hapiness : m_components) {
+			hapiness->OnDestroy();
+		}
 	}
 
 	float Actor::GetRadius() const
@@ -61,8 +82,7 @@ namespace bad
 	{
 		Object::Read(value);
 
-		JSON_READ_NAME_REQ(value, "lifespan", m_lifespan);
-		JSON_READ_NAME_REQ(value, "damping", m_damping);
+		JSON_READ_NAME(value, "lifespan", m_lifespan);
 
 		if (JSON_HAS_NAME(value, "transform")) {
 			m_transform.Read(JSON_GET_NAME(value, "transform"));

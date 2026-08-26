@@ -17,4 +17,5 @@ public:
 
 	void OnCollision(bad::Object* other) override;
 private:
+	float m_speed = 0.0f;
 };

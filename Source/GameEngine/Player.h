@@ -17,5 +17,8 @@ public:
 	void Update(float dt) override;
 
 	void OnCollision(bad::Object* other) override;
+
+	void Read(const bad::json::value_t& value) override;
 private:
+	float m_speed = 0.0f;
 };

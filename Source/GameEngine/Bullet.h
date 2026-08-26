@@ -17,6 +17,9 @@ public:
 	CLASS_PROTOTYPE(Bullet)
 
 	virtual void Update(float dt) override;
+
+	void Read(const bad::json::value_t& value) override;
 private:
-	float m_startingTime;
+	float m_startingTime = 0.0f;
+	float m_speed = 0.0f;
 };

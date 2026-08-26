@@ -72,11 +72,16 @@ namespace bad {
 		UpdateCollisions();
 
 		//remove destroyed actors
-		std::erase_if(m_objects, [](const auto& actor) {return !actor->m_active;});
+		for (auto& actor : m_objects)
+		{
+			if (actor->m_destroyed) actor->OnDestroy();
+		}
 		
-
 		//insert new actors
-		m_objects.insert(m_objects.end(),std::make_move_iterator(m_pendingObjects.begin()),std::make_move_iterator(m_pendingObjects.end()));
+		for (auto& actor : m_pendingObjects) {
+			actor->Start();
+			m_objects.push_back(std::move(actor));
+		}
 
 		m_pendingObjects.clear();
 	}

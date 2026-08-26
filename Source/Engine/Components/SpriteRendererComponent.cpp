@@ -21,5 +21,10 @@ namespace bad {
 		if (!textureName.empty()) {
 			m_texture = Resources().Get<Texture>(textureName);
 		}
+
+		if (!m_texture)
+		{
+			std::cerr << "FAILED TO LOAD TEXTURE: " << textureName << '\n';
+		}
 	}
 }

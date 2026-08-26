@@ -5,15 +5,14 @@
       "name": "playerPrototype",
       "tags": [ "player" ],
       "active": true,
+      "speed": 1000,
       "transform": {
-        "position": [ 0, 0 ],
+        "position": [ 960, 540 ],
         "rotation": 0,
-        "scale": [ 1, 1 ]
+        "scale": [ 2, 2 ]
       },
       "lifespan": -1,
       "prototype": true,
-      "velocity": [ 0, 0 ],
-      "damping": 0.8,
       "components": [
         {
           "type": "SpriteRendererComponent",
@@ -22,6 +21,14 @@
         {
           "type": "CircleColliderComponent",
           "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 0.8,
+          "angular_damping": 3,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     },
@@ -35,10 +42,9 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
+      "speed": 1000,
       "lifespan": -1,
       "prototype": true,
-      "velocity": [ 0, 0 ],
-      "damping": 0.8,
       "components": [
         {
           "type": "SpriteRendererComponent",
@@ -47,6 +53,14 @@
         {
           "type": "CircleColliderComponent",
           "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 2.0,
+          "angular_damping": 0.5,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     },
@@ -60,10 +74,9 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
+      "speed": 1000,
       "lifespan": -1,
-      "prototype": false,
-      "velocity": [ 0, 0 ],
-      "damping": 0.8,
+      "prototype": true,
       "components": [
         {
           "type": "SpriteRendererComponent",
@@ -72,6 +85,14 @@
         {
           "type": "CircleColliderComponent",
           "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 2.0,
+          "angular_damping": 2,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     },
@@ -87,8 +108,6 @@
       "active": true,
       "lifespan": -1,
       "prototype": true,
-      "velocity": [ 0, 0 ],
-      "damping": 0.8,
       "components": [
         {
           "type": "SpriteRendererComponent",
@@ -97,6 +116,14 @@
         {
           "type": "CircleColliderComponent",
           "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 2.0,
+          "angular_damping": 0.5,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     },

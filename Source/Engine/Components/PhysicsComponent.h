@@ -17,6 +17,9 @@ namespace bad
 		virtual void SetPosition(const Vector2<float>& position) = 0;
 		virtual Vector2<float> GetPosition() const = 0;
 
+		virtual void SetRotation(float rotation) = 0;
+		virtual float GetRotation() const = 0;
+
 		virtual void Read(const json::value_t& value);
 
 	protected:
