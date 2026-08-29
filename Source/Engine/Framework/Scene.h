@@ -6,8 +6,9 @@ namespace bad {
 	class Engine;
 	class Scene {
 	public:
-		void RemoveAllActors();
 		void AddActor(std::unique_ptr<Actor> actor);
+		void RemoveAllActors(bool force = false);
+
 
 		bool Load(const std::string& sceneName);
 

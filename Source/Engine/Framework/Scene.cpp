@@ -6,9 +6,8 @@
 #include "Components/ColliderComponent.h"
 
 namespace bad {
-	void Scene::RemoveAllActors(){
-		m_objects.clear();
-		m_pendingObjects.clear();
+	void Scene::RemoveAllActors(bool force) {
+		std::erase_if(m_objects, [force](auto& actor)) { return !actor->GetPersistent() || force; }
 	}
 
 	void Scene::AddActor(std::unique_ptr<Actor> actor) {
@@ -44,11 +43,11 @@ namespace bad {
 
 					bool prototype = false;
 					JSON_READ_REQ(objectValue, prototype);
-					
-					if(prototype){
+
+					if (prototype) {
 						std::string name;
 						JSON_READ_REQ(objectValue, name);
-						Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor)); 
+						Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor));
 					}
 					else {
 						AddActor(std::move(actor));
@@ -69,14 +68,13 @@ namespace bad {
 		{
 			actor->Update(g_time.GetDeltaTime());
 		}
-		UpdateCollisions();
 
 		//remove destroyed actors
 		for (auto& actor : m_objects)
 		{
 			if (actor->m_destroyed) actor->OnDestroy();
 		}
-		
+
 		//insert new actors
 		for (auto& actor : m_pendingObjects) {
 			actor->Start();
@@ -111,6 +109,7 @@ namespace bad {
 			}
 		}
 	}
+
 	void Scene::Clear() {
 		Engine::Get().GetRenderer().Clear();
 	}

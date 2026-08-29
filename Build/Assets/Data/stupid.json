@@ -5,7 +5,7 @@
       "name": "playerPrototype",
       "tags": [ "player" ],
       "active": true,
-      "speed": 1000,
+      "speed": 150,
       "transform": {
         "position": [ 960, 540 ],
         "rotation": 0,
@@ -26,8 +26,8 @@
           "type": "Box2DPhysicsComponent",
           "mass": 1,
           "linear_damping": 0.8,
-          "angular_damping": 3,
-          "size": [ 48, 48 ],
+          "angular_damping": 10,
+          "size": [ 20, 20 ],
           "gravity_scale": 0
         }
       ]
@@ -42,7 +42,7 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
-      "speed": 1000,
+      "speed": 90,
       "lifespan": -1,
       "prototype": true,
       "components": [
@@ -59,7 +59,7 @@
           "mass": 1,
           "linear_damping": 2.0,
           "angular_damping": 0.5,
-          "size": [ 48, 48 ],
+          "size": [ 25, 25 ],
           "gravity_scale": 0
         }
       ]
@@ -74,7 +74,7 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
-      "speed": 1000,
+      "speed": 300,
       "lifespan": -1,
       "prototype": true,
       "components": [
@@ -91,8 +91,9 @@
           "mass": 1,
           "linear_damping": 2.0,
           "angular_damping": 2,
-          "size": [ 48, 48 ],
-          "gravity_scale": 0
+          "size": [ 1, 1 ],
+          "gravity_scale": 0,
+          "is_sensor": true
         }
       ]
     },
@@ -106,6 +107,7 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
+      "speed": 110,
       "lifespan": -1,
       "prototype": true,
       "components": [
@@ -121,9 +123,10 @@
           "type": "Box2DPhysicsComponent",
           "mass": 1,
           "linear_damping": 2.0,
-          "angular_damping": 0.5,
-          "size": [ 48, 48 ],
-          "gravity_scale": 0
+          "angular_damping": 0,
+          "size": [ 1, 1 ],
+          "gravity_scale": 0,
+          "is_sensor": true
         }
       ]
     },
@@ -133,6 +136,7 @@
       "name": "Bat",
       "tags": [ "enemy" ],
       "active": true,
+      "speed": 120,
       "transform": {
         "position": [ 300, 300 ],
         "rotation": 0,
@@ -144,6 +148,25 @@
           "texture_frames": "Assets/Animations/bat_idle.json",
           "frames_per_second": 10,
           "loop": true
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "prototype": false,
+      "name": "Bat",
+      "tags": [ "enemy" ],
+      "active": true,
+      "speed": 120,
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "components": [
+        {
+          "type": "TilemapLoaderComponent",
+          "tilemap_name": "Assets/Images/world.json"
         }
       ]
     }

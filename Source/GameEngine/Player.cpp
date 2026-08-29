@@ -15,8 +15,8 @@ void Player::Update(float dt) {
     if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_S)) thrust = -m_speed;
 
     float rotate = 0.0f;
-    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_D)) rotate = 1000.0f;
-    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_A)) rotate = -1000.0f;
+    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_D)) rotate = 110.0f;
+    if (bad::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_A)) rotate = -110.0f;
 
     bad::PhysicsComponent* physicsComponent = GetComponent<bad::PhysicsComponent>();
     if (physicsComponent) {
@@ -31,7 +31,7 @@ void Player::Update(float dt) {
         position.x = bad::Wrap(position.x, 0.0f, bad::Engine::Get().GetRenderer().GetWidth());
         position.y = bad::Wrap(position.y, 0.0f, bad::Engine::Get().GetRenderer().GetHeight());
 
-
+        physicsComponent->SetPosition(position);
     }
 
     if (bad::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_F)) {

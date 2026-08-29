@@ -22,4 +22,5 @@ public:
 private:
 	void EXPLOOD();
 	int m_shrapnelAmount;
+	float m_speed = 0.0;
 };

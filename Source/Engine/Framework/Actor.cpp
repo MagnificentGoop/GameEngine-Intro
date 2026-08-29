@@ -87,6 +87,7 @@ namespace bad
 		if (JSON_HAS_NAME(value, "transform")) {
 			m_transform.Read(JSON_GET_NAME(value, "transform"));
 		}
+		JSON_READ_NAME(value, "persistent", m_persistent);
 
 		if (JSON_HAS_NAME(value, "components")) {
 			for (auto& componentValue : JSON_GET_NAME(value, "components").GetArray()) {

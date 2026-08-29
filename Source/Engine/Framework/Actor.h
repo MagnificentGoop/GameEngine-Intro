@@ -65,12 +65,15 @@ namespace bad
 		template<std::derived_from<Component> T>
 		T* GetComponent();
 
+		bool GetPersistent() const { return m_persistent; }
+
 		friend Scene;
 		Scene* GetScene() { return m_scene; }
 
 	protected:
 		Transform2D m_transform;
 		float m_lifespan = -1.0f;
+		bool m_persistent = false;
 
 		std::vector<res_t<Component>> m_components;
 

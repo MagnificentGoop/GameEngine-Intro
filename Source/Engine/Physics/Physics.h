@@ -15,6 +15,7 @@ namespace bad
 
 		void Update(float dt);
 
+		void ProcessCollisionEvents();
 
 		static float m_pixelsPerUnit;
 		friend class PhysicsBody;

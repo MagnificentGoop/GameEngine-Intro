@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Physics.h"
+#include "Framework/Actor.h"
 
 namespace bad
 {
@@ -21,5 +22,64 @@ namespace bad
 	void Physics::Update(float dt)
 	{
 		b2World_Step(m_worldId, 1.0f / 60.0f, 4);
+		ProcessCollisionEvents();
+	}
+
+	void Physics::ProcessCollisionEvents(){
+		b2ContactEvents contactEvents = b2World_GetContactEvents(m_worldId);
+
+		for (size_t i = 0; i < contactEvents.beginCount; i++)
+		{
+			auto contactEvent = contactEvents.beginEvents + i;
+			if (!b2Shape_IsValid(contactEvent->shapeIdA) || !b2Shape_IsValid(contactEvent->shapeIdB)) {
+				//TODO: cerr
+				continue;
+			}
+			
+			b2BodyId bodyA = b2Shape_GetBody(contactEvent->shapeIdA);
+			b2BodyId bodyB = b2Shape_GetBody(contactEvent->shapeIdB);
+
+			Actor* actorA = (Actor*)b2Body_GetUserData(bodyA);
+			if (actorA == nullptr || actorA->GetDestroyed() || !actorA->GetActive()) {
+				//TODO: cerr
+				continue;
+			}
+			Actor* actorB = (Actor*)b2Body_GetUserData(bodyB);
+			if (actorB == nullptr || actorB->GetDestroyed() || !actorB->GetActive()) {
+				//TODO: cerr
+				continue;
+			}
+
+			actorA->OnCollision(actorB);
+			actorB->OnCollision(actorA);
+		}
+
+
+		auto sensorEvents = b2World_GetSensorEvents(m_worldId);
+		for (size_t i = 0; i < sensorEvents.beginCount; i++)
+		{
+			auto sensorEvent = sensorEvents.beginEvents + i;
+			if (!b2Shape_IsValid(sensorEvent->visitorShapeId) || !b2Shape_IsValid(sensorEvent->visitorShapeId)) {
+				//TODO: cerr
+				continue;
+			}
+
+			b2BodyId bodyA = b2Shape_GetBody(sensorEvent->visitorShapeId);
+			b2BodyId bodyB = b2Shape_GetBody(sensorEvent->sensorShapeId);
+
+			Actor* actorA = (Actor*)b2Body_GetUserData(bodyA);
+			if (actorA == nullptr || actorA->GetDestroyed() || !actorA->GetActive()) {
+				//TODO: cerr
+				continue;
+			}
+			Actor* actorB = (Actor*)b2Body_GetUserData(bodyB);
+			if (actorB == nullptr || actorB->GetDestroyed() || !actorB->GetActive()) {
+				//TODO: cerr
+				continue;
+			}
+
+			actorA->OnCollision(actorB);
+			actorB->OnCollision(actorA);
+		}
 	}
 }

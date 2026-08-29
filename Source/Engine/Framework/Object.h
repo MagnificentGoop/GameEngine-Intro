@@ -38,6 +38,8 @@ namespace bad {
 		void SetActive(bool active = false) { m_active = active; }
 		bool GetActive() const { return m_active; }
 
+		bool GetDestroyed() const { return m_destroyed; }
+
 		virtual void Read(const json::value_t& value);
 	protected:
 		std::string m_name = "Default";

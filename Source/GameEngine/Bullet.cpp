@@ -15,6 +15,13 @@ void Bullet::Update(float dt) {
         physicsComponent->SetVelocity(force);
     }
 
+    bad::Vector2<float> position = physicsComponent->GetPosition();
+
+    position.x = bad::Wrap(position.x, 0.0f, bad::Engine::Get().GetRenderer().GetWidth());
+    position.y = bad::Wrap(position.y, 0.0f, bad::Engine::Get().GetRenderer().GetHeight());
+
+    physicsComponent->SetPosition(position);
+
 	Actor::Update(dt);
 }
 

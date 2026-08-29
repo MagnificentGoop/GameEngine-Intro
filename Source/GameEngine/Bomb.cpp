@@ -1,6 +1,7 @@
 #include "Bomb.h"
 #include <iostream>
 #include <memory>
+#include "Components/Box2DPhysicsComponent.h"
 
 FACTORY_REGISTER(Bomb)
 
@@ -8,9 +9,8 @@ void Bomb::Update(float dt){
 	if (m_lifespan <= 0) {
         EXPLOOD();
 	}
-	Bullet::Update(dt);
-
-    
+    m_speed = 0.0f;
+    Bullet::Update(dt);
 }
 
 void Bomb::EXPLOOD(){

@@ -120,5 +120,7 @@ void SpaceGame::SpawnPlayer(){
 }
 
 void SpaceGame::SpawnEnemy(){
-    //TODO: Spawn Enemy
+    auto object = bad::Factory::Instance().Create<Enemy>("enemyPrototype");
+
+    m_scene->AddActor(std::move(object));
 }
