@@ -1,0 +1,174 @@
+{
+  "actors": [
+    {
+      "type": "Player",
+      "name": "playerPrototype",
+      "tags": [ "player" ],
+      "active": true,
+      "speed": 150,
+      "transform": {
+        "position": [ 960, 540 ],
+        "rotation": 0,
+        "scale": [ 2, 2 ]
+      },
+      "lifespan": -1,
+      "prototype": true,
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Player.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 0.8,
+          "angular_damping": 10,
+          "size": [ 20, 20 ],
+          "gravity_scale": 0
+        }
+      ]
+    },
+    {
+      "type": "Enemy",
+      "name": "enemyPrototype",
+      "tags": [ "enemy", "Death" ],
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "active": true,
+      "speed": 90,
+      "lifespan": -1,
+      "prototype": true,
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Enemy.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 2.0,
+          "angular_damping": 0.5,
+          "size": [ 25, 25 ],
+          "gravity_scale": 0
+        }
+      ]
+    },
+    {
+      "type": "Bullet",
+      "name": "bulletPrototype",
+      "tags": [ "bullet" ],
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "active": true,
+      "speed": 300,
+      "lifespan": -1,
+      "prototype": true,
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Bullet.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 2.0,
+          "angular_damping": 2,
+          "size": [ 1, 1 ],
+          "gravity_scale": 0,
+          "is_sensor": true
+        }
+      ]
+    },
+    {
+      "type": "Bomb",
+      "name": "bombPrototype",
+      "tags": [ "bomb" ],
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "active": true,
+      "speed": 110,
+      "lifespan": -1,
+      "prototype": true,
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/Shrapnel.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1,
+          "linear_damping": 2.0,
+          "angular_damping": 0,
+          "size": [ 1, 1 ],
+          "gravity_scale": 0,
+          "is_sensor": true
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "prototype": false,
+      "name": "Bat",
+      "tags": [ "enemy" ],
+      "active": true,
+      "speed": 120,
+      "transform": {
+        "position": [ 300, 300 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "components": [
+        {
+          "type": "SpriteAnimationRendererComponent",
+          "texture_frames": "Assets/Animations/bat_idle.json",
+          "frames_per_second": 10,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "prototype": false,
+      "name": "Bat",
+      "tags": [ "enemy" ],
+      "active": true,
+      "speed": 120,
+      "transform": {
+        "position": [ 0, 0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "components": [
+        {
+          "type": "TilemapLoaderComponent",
+          "tilemap_name": "Assets/Images/world.json"
+        }
+      ]
+    }
+  ]
+}
