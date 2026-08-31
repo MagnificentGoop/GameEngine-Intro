@@ -144,18 +144,30 @@
       },
       "components": [
         {
-          "type": "SpriteAnimationRendererComponent",
-          "texture_frames": "Assets/Animations/bat_idle.json",
-          "frames_per_second": 10,
-          "loop": true
+          "type": "SpriteAnimatorRendererComponent",
+          "default_animation": "run",
+          "animations": [
+            {
+              "name": "run",
+              "texture_frames": "Assets/Animations/bat_idle.json",
+              "frames_per_second": 10,
+              "loop": true
+            },
+            {
+              "name": "idle",
+              "texture_frames": "Assets/Animations/bat_idle.json",
+              "frames_per_second": 10,
+              "loop": true
+            }
+          ]
         }
       ]
     },
     {
       "type": "Actor",
       "prototype": false,
-      "name": "Bat",
-      "tags": [ "enemy" ],
+      "name": "Tilemap",
+      "tags": [ ],
       "active": true,
       "speed": 120,
       "transform": {

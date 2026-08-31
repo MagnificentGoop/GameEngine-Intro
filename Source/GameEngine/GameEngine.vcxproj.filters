@@ -83,5 +83,8 @@
     <None Include="..\..\Build\Assets\SpriteGame\Tilemaps\world.json">
       <Filter>Assets\SpriteGame\Tilemaps</Filter>
     </None>
+    <None Include="..\..\Build\Assets\SpriteGame\Scenes\scene.json">
+      <Filter>Assets\SpriteGame\Scenes</Filter>
+    </None>
   </ItemGroup>
 </Project>
