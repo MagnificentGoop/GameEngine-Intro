@@ -16,6 +16,10 @@ namespace bad {
 
 	void Box2DPhysicsComponent::Start(){
 		m_bodyDef.actor = GetOwner();
+
+		if (m_bodyDef.actor == nullptr)
+			std::cout << "PHYSICS: GetOwner() IS NULL\n";
+
 		m_physicsBody = std::make_unique<PhysicsBody>(GetOwner()->GetTransform(), m_size, m_bodyDef, Engine::Get().GetPhysics());
 	}
 
@@ -80,6 +84,13 @@ namespace bad {
 			if (EqualsIgnoreCase(shapeName, "box")) m_bodyDef.shape = PhysicsBody::Shape::Box;
 			else if (EqualsIgnoreCase(shapeName, "capsule")) m_bodyDef.shape = PhysicsBody::Shape::Capsule;
 			else if (EqualsIgnoreCase(shapeName, "circle")) m_bodyDef.shape = PhysicsBody::Shape::Circle;
+		}
+	}
+	void Box2DPhysicsComponent::OnDestroy(){
+		if (m_physicsBody)
+		{
+			m_physicsBody->Destroy();
+			m_physicsBody.reset();
 		}
 	}
 }

@@ -39,6 +39,7 @@ namespace bad {
 		bool GetActive() const { return m_active; }
 
 		bool GetDestroyed() const { return m_destroyed; }
+		void SetDestroyed(bool destroyed = true) { m_destroyed = destroyed; }
 
 		virtual void Read(const json::value_t& value);
 	protected:

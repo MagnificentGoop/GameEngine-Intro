@@ -53,14 +53,14 @@ void Player::Update(float dt) {
     Actor::Update(dt);
 }
 
-void Player::OnCollision(Object* other)
+void Player::OnCollision(bad::Actor* other)
 {
     for (int i = 0; i < other->GetTags().size(); i++)
     {
         if (other->GetTags().at(i) == "Death") { 
             bad::g_audio.PlaySound("scream");
-            m_active = false;
-            other->SetActive(); 
+            SetDestroyed();
+            other->SetDestroyed(); 
             ((SpaceGame*)m_scene->GetGame())->OnPlayerDead();
         }
     }

@@ -27,13 +27,13 @@ void Bomb::EXPLOOD(){
 	}
 }
 
-void Bomb::OnCollision(bad::Object* other)
+void Bomb::OnCollision(bad::Actor* other)
 {
     for (int i = 0; i < other->GetTags().size(); i++)
     {
         if (other->GetTags().at(i) == "PlayerBullet") {
-            SetActive();
-            other->SetActive();
+            SetDestroyed();
+            other->SetDestroyed();
 
             EXPLOOD();
         }

@@ -33,6 +33,8 @@ namespace bad {
 		float GetRotation() const override;
 
 		void Read(const json::value_t& value) override;
+
+		void OnDestroy() override;
 	private:
 		Vector2<float> m_size{ 0,0 };
 		Vector2<float> m_scale{ 1,1 };

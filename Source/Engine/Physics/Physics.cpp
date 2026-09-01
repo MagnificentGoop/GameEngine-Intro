@@ -59,7 +59,7 @@ namespace bad
 		for (size_t i = 0; i < sensorEvents.beginCount; i++)
 		{
 			auto sensorEvent = sensorEvents.beginEvents + i;
-			if (!b2Shape_IsValid(sensorEvent->visitorShapeId) || !b2Shape_IsValid(sensorEvent->visitorShapeId)) {
+			if (!b2Shape_IsValid(sensorEvent->visitorShapeId) || !b2Shape_IsValid(sensorEvent->sensorShapeId)) {
 				//TODO: cerr
 				continue;
 			}

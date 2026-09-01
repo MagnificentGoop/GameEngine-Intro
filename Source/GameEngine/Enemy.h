@@ -14,8 +14,8 @@ public:
 	CLASS_PROTOTYPE(Enemy)
 
 	void Update(float dt) override;
+	void OnCollision(bad::Actor* other) override;
 
-	void OnCollision(bad::Object* other) override;
 private:
 	float m_speed = 0.0f;
 };

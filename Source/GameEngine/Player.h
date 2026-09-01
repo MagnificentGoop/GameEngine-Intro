@@ -15,8 +15,7 @@ public:
 	CLASS_PROTOTYPE(Player)
 
 	void Update(float dt) override;
-
-	void OnCollision(bad::Object* other) override;
+	void OnCollision(bad::Actor* other) override;
 
 	void Read(const bad::json::value_t& value) override;
 private:

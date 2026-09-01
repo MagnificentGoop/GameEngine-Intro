@@ -29,13 +29,13 @@ void Enemy::Update(float dt) {
     Actor::Update(dt);
 }
 
-void Enemy::OnCollision(Object* other)
+void Enemy::OnCollision(bad::Actor* other)
 {
     for (int i = 0; i < other->GetTags().size(); i++)
     {
         if (other->GetTags().at(i) == "PlayerBullet") {
-            SetActive();
-            other->SetActive(); 
+            SetDestroyed();
+            other->SetDestroyed(); 
 
             ((SpaceGame*)m_scene->GetGame())->AddPoints(100);
 

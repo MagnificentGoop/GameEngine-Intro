@@ -89,7 +89,7 @@
         },
         {
           "type": "Box2DPhysicsComponent",
-          "mass": 1,
+          "mass": 10,
           "linear_damping": 0,
           "angular_damping": 20,
           "size": [ 1, 1 ],
@@ -122,7 +122,7 @@
         },
         {
           "type": "Box2DPhysicsComponent",
-          "mass": 1,
+          "mass": 10,
           "linear_damping": 0.1,
           "angular_damping": 20,
           "size": [ 1, 1 ],

@@ -35,15 +35,12 @@ namespace bad
 			if (m_destroyed) {
 				m_lifespan = 0.0f;
 			}
+			if (m_lifespan <= 0.0f && m_lifespan > -1.0f) SetDestroyed();
 			m_lifespan -= dt;
-			m_destroyed = (m_lifespan <= 0.0f && m_lifespan > 1.0f);
 
 		for (auto component : m_components) {
 			component->Update(dt);
 		}
-
-		//m_transform.position += (m_velocity * dt);
-		//m_velocity *= (1.0f / (1.0f + m_damping * dt));
 	}
 
 	void Actor::Draw(const Renderer& renderer) const
@@ -73,10 +70,6 @@ namespace bad
 	float Actor::GetRadius() const
 	{
 		return m_transform.scale.x + m_transform.scale.y / 2;
-	}
-	void Actor::OnCollision(bad::Object* other)
-	{
-		//die
 	}
 	void Actor::Read(const json::value_t& value)
 	{

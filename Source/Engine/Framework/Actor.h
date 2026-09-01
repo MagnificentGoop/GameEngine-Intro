@@ -36,11 +36,9 @@ namespace bad
 
 		virtual void Update(float dt);
 		virtual void Draw(const Renderer& renderer) const;
-
-		virtual void Start();
+			virtual void Start();
 		virtual void OnDestroy();
 
-		virtual void OnCollision(Actor* other) {}
 
 		void SetTransform(const Transform2D& transform) { m_transform = transform; }
 		const Transform2D& GetTransform() const { return m_transform; }
@@ -56,7 +54,7 @@ namespace bad
 		Vector2<float> GetScale() const { return m_transform.scale; }
 
 		float GetRadius() const;
-		virtual void OnCollision(bad::Object* other);
+		virtual void OnCollision(Actor* other) {};
 
 		virtual void Read(const json::value_t& value) override;
 

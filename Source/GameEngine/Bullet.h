@@ -14,9 +14,11 @@ public:
 	Bullet(const bad::ActorDesc& a) : Actor(a) { m_startingTime = bad::g_time.GetTime(); }
 	~Bullet() {};
 
-	CLASS_PROTOTYPE(Bullet)
+	CLASS_PROTOTYPE(Bullet);
+
 
 	virtual void Update(float dt) override;
+	virtual void OnCollision(bad::Actor* other) override {};
 
 	void Read(const bad::json::value_t& value) override;
 private:
