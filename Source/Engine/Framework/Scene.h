@@ -12,7 +12,7 @@ namespace bad {
 
 		bool Load(const std::string& sceneName);
 
-		void Update();
+		void Update(float dt);
 		void Draw() const;
 		void Clear();
 

@@ -5,7 +5,7 @@
       "name": "playerPrototype",
       "tags": [ "player" ],
       "active": true,
-      "speed": 150,
+      "speed": 1,
       "transform": {
         "position": [ 960, 540 ],
         "rotation": 0,
@@ -13,7 +13,7 @@
       },
       "lifespan": -1,
       "prototype": true,
-      "components": [
+      "components": [ 
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/SpriteGame/Images/Player.png"
@@ -25,10 +25,11 @@
         {
           "type": "Box2DPhysicsComponent",
           "mass": 1,
-          "linear_damping": 0.8,
+          "linear_damping": 0.03,
           "angular_damping": 10,
           "size": [ 20, 20 ],
-          "gravity_scale": 0
+          "gravity_scale": 0,
+          "is_sensor": true
         }
       ]
     },
@@ -42,7 +43,7 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
-      "speed": 90,
+      "speed": 1,
       "lifespan": -1,
       "prototype": true,
       "components": [
@@ -57,8 +58,8 @@
         {
           "type": "Box2DPhysicsComponent",
           "mass": 1,
-          "linear_damping": 2.0,
-          "angular_damping": 0.5,
+          "linear_damping": 0.03,
+          "angular_damping": 20,
           "size": [ 25, 25 ],
           "gravity_scale": 0
         }
@@ -74,8 +75,8 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
-      "speed": 300,
-      "lifespan": -1,
+      "speed": 1,
+      "lifespan": 10,
       "prototype": true,
       "components": [
         {
@@ -89,8 +90,8 @@
         {
           "type": "Box2DPhysicsComponent",
           "mass": 1,
-          "linear_damping": 2.0,
-          "angular_damping": 2,
+          "linear_damping": 0,
+          "angular_damping": 20,
           "size": [ 1, 1 ],
           "gravity_scale": 0,
           "is_sensor": true
@@ -107,8 +108,8 @@
         "scale": [ 1, 1 ]
       },
       "active": true,
-      "speed": 110,
-      "lifespan": -1,
+      "speed": 1,
+      "lifespan": 10,
       "prototype": true,
       "components": [
         {
@@ -122,8 +123,8 @@
         {
           "type": "Box2DPhysicsComponent",
           "mass": 1,
-          "linear_damping": 2.0,
-          "angular_damping": 0,
+          "linear_damping": 0.1,
+          "angular_damping": 20,
           "size": [ 1, 1 ],
           "gravity_scale": 0,
           "is_sensor": true

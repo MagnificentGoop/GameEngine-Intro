@@ -7,23 +7,24 @@
 FACTORY_REGISTER(Enemy)
 
 void Enemy::Update(float dt) {
-    Player* player = m_scene->GetObjectByName<Player>("Player");
-    if (player) {
-        bad::PhysicsComponent* physicsComponent = GetComponent<bad::PhysicsComponent>();
-        if (physicsComponent) {
-            bad::Vector2<float> forward{ 1,0 };
-            bad::Vector2<float> force = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed;
+    float thrust = m_speed;
 
-            physicsComponent->ApplyForce(force);
+    bad::PhysicsComponent* physicsComponent = GetComponent<bad::PhysicsComponent>();
+    auto player = m_scene->GetObjectByName("playerPrototype");
+    if (physicsComponent && player != NULL) {
+        bad::Vector2<float> forward{ 1,0 };
+        bad::Vector2<float> force = forward.Rotate(m_transform.rotation * bad::DegToRad) * thrust;
 
-            bad::Vector2<float> direction = player->GetTransform().position - m_transform.position;
-            float rotation = direction.Angle();
-            physicsComponent->SetRotation(rotation * bad::DegToRad);
-        }
+        physicsComponent->ApplyForce(force);
+        physicsComponent->ApplyTorque(1);
+
+        bad::Vector2<float> position = physicsComponent->GetPosition();
+
+        position.x = bad::Wrap(position.x, 0.0f, bad::Engine::Get().GetRenderer().GetWidth());
+        position.y = bad::Wrap(position.y, 0.0f, bad::Engine::Get().GetRenderer().GetHeight());
+
+        physicsComponent->SetPosition(position);
     }
-
-    bad::Vector2<float> velocity{ 1,0 };
-    velocity = velocity.Rotate(m_transform.rotation * bad::DegToRad) * m_speed * dt;
 
     Actor::Update(dt);
 }

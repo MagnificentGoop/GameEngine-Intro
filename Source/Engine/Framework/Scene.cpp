@@ -62,10 +62,11 @@ namespace bad {
 		return true;
 	}
 
-	void Scene::Update() {
+	void Scene::Update(float dt)
+	{
 		for (auto& actor : m_actors)
 		{
-			actor->Update(g_time.GetDeltaTime());
+			actor->Update(dt);
 		}
 
 		for (auto& actor : m_actors)

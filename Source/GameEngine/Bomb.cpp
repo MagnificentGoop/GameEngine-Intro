@@ -9,7 +9,6 @@ void Bomb::Update(float dt){
 	if (m_lifespan <= 0) {
         EXPLOOD();
 	}
-    m_speed = 0.0f;
     Bullet::Update(dt);
 }
 

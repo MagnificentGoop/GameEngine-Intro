@@ -7,22 +7,23 @@ FACTORY_REGISTER(Bullet)
 
 void Bullet::Update(float dt) {
 
+    float thrust = m_speed;
+
     bad::PhysicsComponent* physicsComponent = GetComponent<bad::PhysicsComponent>();
     if (physicsComponent) {
         bad::Vector2<float> forward{ 1,0 };
-        bad::Vector2<float> force = forward.Rotate(m_transform.rotation * bad::DegToRad) * m_speed;
+        bad::Vector2<float> force = forward.Rotate(m_transform.rotation * bad::DegToRad) * thrust;
 
-        physicsComponent->SetVelocity(force);
+        physicsComponent->ApplyForce(force);
+
+        bad::Vector2<float> position = physicsComponent->GetPosition();
+
+        position.x = bad::Wrap(position.x, 0.0f, bad::Engine::Get().GetRenderer().GetWidth());
+        position.y = bad::Wrap(position.y, 0.0f, bad::Engine::Get().GetRenderer().GetHeight());
+
+        physicsComponent->SetPosition(position);
     }
-
-    bad::Vector2<float> position = physicsComponent->GetPosition();
-
-    position.x = bad::Wrap(position.x, 0.0f, bad::Engine::Get().GetRenderer().GetWidth());
-    position.y = bad::Wrap(position.y, 0.0f, bad::Engine::Get().GetRenderer().GetHeight());
-
-    physicsComponent->SetPosition(position);
-
-	Actor::Update(dt);
+    Actor::Update(dt);
 }
 
 void Bullet::Read(const bad::json::value_t& value){
