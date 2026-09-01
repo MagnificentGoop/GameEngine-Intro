@@ -19,7 +19,7 @@ namespace bad {
 			return false;
 		}
 
-		m_texture = Resources().Get<Texture>(textureName);
+		m_texture = Resources().Get<Texture>(textureName, renderer);
 		if (!m_texture) {
 			std::cerr << "Could not load Texture Frame texture: " << textureName << std::endl;
 			return false;

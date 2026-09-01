@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Texture.h"
-#include "Engine.h"
+#include "Renderer.h"
 
 namespace bad {
     Texture::~Texture()
@@ -9,7 +9,7 @@ namespace bad {
         if (m_texture) SDL_DestroyTexture(m_texture);
     }
 
-    bool Texture::Load(const std::string& filename)
+    bool Texture::Load(const std::string& filename, Renderer& renderer)
     {
         // load image onto surface
         SDL_Surface* surface = IMG_Load(filename.c_str());
@@ -20,7 +20,7 @@ namespace bad {
         }
 
         // create texture from surface, texture is a friend class of renderer
-        m_texture = SDL_CreateTextureFromSurface(Engine::Get().GetRenderer().m_renderer, surface);
+        m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
         // once texture is created, surface can be freed up
         SDL_DestroySurface(surface);
         if (!m_texture)

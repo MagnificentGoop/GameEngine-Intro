@@ -12,7 +12,7 @@ namespace bad {
 		Texture() = default;
 		~Texture();
 
-		bool Load(const std::string& filename);
+		bool Load(const std::string& filename, class Renderer& renderer);
 
 		const Vector2<float>& GetSize() const { return m_size; }
 

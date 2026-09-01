@@ -26,8 +26,8 @@ namespace bad {
 		void UpdateCollisions();
 
 	private:
-		std::vector< std::unique_ptr<Actor>> m_objects;
-		std::vector< std::unique_ptr<Actor>> m_pendingObjects;
+		std::vector< std::unique_ptr<Actor>> m_actors;
+		std::vector< std::unique_ptr<Actor>> m_pendingActors;
 
 		class Game* m_game = nullptr;
 	};
@@ -35,7 +35,7 @@ namespace bad {
 	template<typename T>
 	inline T* Scene::GetObjectByName(const std::string& name)
 	{
-		for (auto& actor : m_objects) {
+		for (auto& actor : m_actors) {
 			T* objectT = dynamic_cast<T*>(actor.get());
 			if (objectT && objectT->m_name == name) {
 				return objectT;

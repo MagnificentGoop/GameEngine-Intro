@@ -7,7 +7,7 @@
 
 namespace bad {
 	void Scene::RemoveAllActors(bool force) {
-		std::erase_if(m_objects, [force](auto& actor)) { return !actor->GetPersistent() || force; }
+		std::erase_if(m_actors, [force](auto& actor) {return !actor->GetPersistent() || force; });
 	}
 
 	void Scene::AddActor(std::unique_ptr<Actor> actor) {
@@ -18,7 +18,7 @@ namespace bad {
 		}
 
 		actor->m_scene = this;
-		m_pendingObjects.push_back(std::move(actor));
+		m_pendingActors.push_back(std::move(actor));
 	}
 
 	bool Scene::Load(const std::string& sceneName)
@@ -63,29 +63,30 @@ namespace bad {
 	}
 
 	void Scene::Update() {
-		bad::Engine::Get().Update();
-		for (auto& actor : m_objects)
+		for (auto& actor : m_actors)
 		{
 			actor->Update(g_time.GetDeltaTime());
 		}
 
-		//remove destroyed actors
-		for (auto& actor : m_objects)
+		for (auto& actor : m_actors)
 		{
 			if (actor->m_destroyed) actor->OnDestroy();
 		}
 
-		//insert new actors
-		for (auto& actor : m_pendingObjects) {
+		std::erase_if(m_actors, [](auto& actor) {return actor->GetDestroyed(); });
+
+		for (auto& actor : m_pendingActors) {
 			actor->Start();
-			m_objects.push_back(std::move(actor));
+			m_actors.push_back(std::move(actor));
 		}
 
-		m_pendingObjects.clear();
+		m_pendingActors.clear();
+
+		//UpdateCollisions();
 	}
 
 	void Scene::Draw() const {
-		for (auto& actor : m_objects) {
+		for (auto& actor : m_actors) {
 			actor->Draw(Engine::Get().GetRenderer());
 		}
 		Engine::Get().GetRenderer().Render();
@@ -93,8 +94,8 @@ namespace bad {
 
 	void Scene::UpdateCollisions()
 	{
-		for (auto& actorA : m_objects) {
-			for (auto& actorB : m_objects) {
+		for (auto& actorA : m_actors) {
+			for (auto& actorB : m_actors) {
 				if (actorA == actorB || !actorA->m_active || !actorB->m_active) continue;
 
 				auto colliderA = actorA->GetComponent<ColliderComponent>();

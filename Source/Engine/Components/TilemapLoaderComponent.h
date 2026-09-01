@@ -1,12 +1,13 @@
 #pragma once
 #include "RendererComponent.h"
+#include "Physics/PhysicsBody.h"
 
 namespace bad {
 	class TilemapLoaderComponent : public RendererComponent {
 	public:
 		CLASS_PROTOTYPE(TilemapLoaderComponent);
 
-		TilemapLoaderComponent();
+		TilemapLoaderComponent() {};
 		TilemapLoaderComponent(const TilemapLoaderComponent& other);
 
 		void Start() override;

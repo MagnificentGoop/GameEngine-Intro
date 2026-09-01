@@ -2,6 +2,7 @@
 #include "Renderer/Renderer.h"
 #include "Framework/Actor.h"
 #include "Core/Factory.h"
+#include "Engine.h"
 
 namespace bad {
 
@@ -18,7 +19,7 @@ namespace bad {
 
 	void SpriteRendererComponent::Start(){
 		if (!m_textureName.empty()) {
-			m_texture = Resources().Get<Texture>(m_textureName);
+			m_texture = Resources().Get<Texture>(m_textureName, Engine::Get().GetRenderer());
 			if (m_texture) {
 				m_size = m_texture->GetSize();
 			}

@@ -38,7 +38,7 @@ namespace bad
 
         m_size = new Vector2{ width, height };
 
-        SDL_SetRenderVSync(m_renderer, 1);
+        SDL_SetRenderVSync(m_renderer, 0);
         
         SetBackgroundColor(0, 0, 0);
         return 0;
