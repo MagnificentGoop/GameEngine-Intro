@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\Animations\bat_idle.json" />
+    <None Include="..\..\Build\Assets\SpriteGame\Animations\bat_idle.json" />
     <None Include="..\..\Build\Assets\SpriteGame\Scenes\scene.json" />
     <None Include="..\..\Build\Assets\SpriteGame\Tilemaps\world.json" />
   </ItemGroup>

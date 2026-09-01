@@ -86,5 +86,8 @@
     <None Include="..\..\Build\Assets\SpriteGame\Scenes\scene.json">
       <Filter>Assets\SpriteGame\Scenes</Filter>
     </None>
+    <None Include="..\..\Build\Assets\SpriteGame\Animations\bat_idle.json">
+      <Filter>Assets\SpriteGame\Animations</Filter>
+    </None>
   </ItemGroup>
 </Project>
