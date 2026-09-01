@@ -11,7 +11,7 @@ bool SpaceGame::Initialize()
 
     m_scene = new bad::Scene();
     m_scene->SetGame(this);
-    m_scene->Load("Assets/SpaceGame/Data/stupid.json");
+    m_scene->Load("Assets/SpriteGame/Scenes/scene.json");
 
     bad::g_audio.Initialize();
     bad::g_audio.AddSound("scream", "Assets/SpaceGame/Sounds/scream.mp3");

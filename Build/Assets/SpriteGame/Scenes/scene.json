@@ -16,7 +16,7 @@
       "components": [
         {
           "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/Player.png"
+          "texture": "Assets/SpaceGame/Images/Player.png"
         },
         {
           "type": "CircleColliderComponent",
@@ -48,7 +48,7 @@
       "components": [
         {
           "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/Enemy.png"
+          "texture": "Assets/SpaceGame/Images/Enemy.png"
         },
         {
           "type": "CircleColliderComponent",
@@ -80,7 +80,7 @@
       "components": [
         {
           "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/Bullet.png"
+          "texture": "Assets/SpaceGame/Images/Bullet.png"
         },
         {
           "type": "CircleColliderComponent",
@@ -113,7 +113,7 @@
       "components": [
         {
           "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/Shrapnel.png"
+          "texture": "Assets/SpaceGame/Images/Shrapnel.png"
         },
         {
           "type": "CircleColliderComponent",
@@ -145,7 +145,7 @@
       "components": [
         {
           "type": "SpriteAnimationRendererComponent",
-          "texture_frames": "Assets/Animations/bat_idle.json",
+          "texture_frames": "Assets/SpaceGame/Animations/bat_idle.json",
           "frames_per_second": 10,
           "loop": true
         }
@@ -166,7 +166,7 @@
       "components": [
         {
           "type": "TilemapLoaderComponent",
-          "tilemap_name": "Assets/Images/world.json"
+          "tilemap_name": "Assets/SpaceGame/Images/world.json"
         }
       ]
     }
