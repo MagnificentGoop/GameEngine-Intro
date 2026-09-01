@@ -93,25 +93,6 @@ namespace bad {
 		Engine::Get().GetRenderer().Render();
 	}
 
-	void Scene::UpdateCollisions()
-	{
-		for (auto& actorA : m_actors) {
-			for (auto& actorB : m_actors) {
-				if (actorA == actorB || !actorA->m_active || !actorB->m_active) continue;
-
-				auto colliderA = actorA->GetComponent<ColliderComponent>();
-				auto colliderB = actorB->GetComponent<ColliderComponent>();
-
-				if (!colliderA || !colliderB) continue;
-
-				if (colliderA->CheckCollision(*colliderB)) {
-					actorA->OnCollision(actorB.get());
-					actorB->OnCollision(actorA.get());
-				}
-			}
-		}
-	}
-
 	void Scene::Clear() {
 		Engine::Get().GetRenderer().Clear();
 	}

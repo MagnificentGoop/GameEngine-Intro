@@ -62,7 +62,8 @@ namespace bad
 
 	PhysicsBody::~PhysicsBody() 
 	{
-		b2DestroyBody(m_bodyId);
+		if (b2Body_IsValid(m_bodyId))
+			b2DestroyBody(m_bodyId);
 	}
 
 	Vector2<float> PhysicsBody::GetPosition() const

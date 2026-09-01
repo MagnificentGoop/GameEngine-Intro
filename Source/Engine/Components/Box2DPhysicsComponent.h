@@ -8,9 +8,11 @@ namespace bad {
 
 		Box2DPhysicsComponent() = default;
 		Box2DPhysicsComponent(const Box2DPhysicsComponent& other);
+		~Box2DPhysicsComponent();
 
 		void Start() override;
 		void Update(float dt) override;
+		void OnDestroy() override;
 
 		void ApplyForce(const Vector2<float>& force) override;
 
@@ -33,8 +35,6 @@ namespace bad {
 		float GetRotation() const override;
 
 		void Read(const json::value_t& value) override;
-
-		void OnDestroy() override;
 	private:
 		Vector2<float> m_size{ 0,0 };
 		Vector2<float> m_scale{ 1,1 };

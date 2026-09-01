@@ -14,6 +14,11 @@ namespace bad {
 		m_scale = other.m_scale;
 	}
 
+	Box2DPhysicsComponent::~Box2DPhysicsComponent()
+	{
+		
+	}
+
 	void Box2DPhysicsComponent::Start(){
 		m_bodyDef.actor = GetOwner();
 
@@ -26,6 +31,10 @@ namespace bad {
 	void Box2DPhysicsComponent::Update(float dt){
 		GetOwner()->SetPosition(GetPosition());
 		GetOwner()->SetRotation(GetRotation() * RadToDeg);
+	}
+
+	void Box2DPhysicsComponent::OnDestroy(){
+		m_physicsBody.reset();
 	}
 
 	void Box2DPhysicsComponent::ApplyForce(const Vector2<float>& force){
@@ -84,13 +93,6 @@ namespace bad {
 			if (EqualsIgnoreCase(shapeName, "box")) m_bodyDef.shape = PhysicsBody::Shape::Box;
 			else if (EqualsIgnoreCase(shapeName, "capsule")) m_bodyDef.shape = PhysicsBody::Shape::Capsule;
 			else if (EqualsIgnoreCase(shapeName, "circle")) m_bodyDef.shape = PhysicsBody::Shape::Circle;
-		}
-	}
-	void Box2DPhysicsComponent::OnDestroy(){
-		if (m_physicsBody)
-		{
-			m_physicsBody->Destroy();
-			m_physicsBody.reset();
 		}
 	}
 }

@@ -21,10 +21,6 @@ namespace bad {
 
 		void SetGame(class Game* game) { m_game = game; }
 		class Game* GetGame() { return m_game; }
-
-	private:
-		void UpdateCollisions();
-
 	private:
 		std::vector< std::unique_ptr<Actor>> m_actors;
 		std::vector< std::unique_ptr<Actor>> m_pendingActors;
