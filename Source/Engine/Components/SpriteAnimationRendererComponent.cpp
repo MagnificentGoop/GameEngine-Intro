@@ -11,6 +11,7 @@ namespace bad {
 
 	void SpriteAnimationRendererComponent::Update(float dt) {
 		if (!m_textureFrames) return;
+		if (m_framesPerSecond <= 0.0f) return;
 
 		m_frameTimer += dt;
 		float frameTime = 1.0f / m_framesPerSecond;
@@ -30,6 +31,11 @@ namespace bad {
 
 			m_frameTimer -= frameTime;
 		}
+
+		std::cout
+			<< "Frame: " << m_frame
+			<< " / " << m_textureFrames->GetTotalFrames()
+			<< std::endl;
 
 		m_sourceRect = m_textureFrames->GetFrameRect(m_frame);
 	}

@@ -13,7 +13,9 @@ namespace bad {
 			if (m_sourceRect.w > 0 && m_sourceRect.h > 0) {
 				renderer.DrawTexture(*m_texture, m_sourceRect, GetOwner()->GetTransform().position.x, GetOwner()->GetTransform().position.y, GetOwner()->GetTransform().rotation, GetOwner()->GetTransform().scale, m_flipH);
 			}
-			renderer.DrawTexture(*m_texture, GetOwner()->GetTransform(), m_flipH);
+			else {
+				renderer.DrawTexture(*m_texture, GetOwner()->GetTransform(), m_flipH);
+			}
 		}
 	}
 

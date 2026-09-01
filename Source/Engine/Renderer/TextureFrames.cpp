@@ -42,7 +42,7 @@ namespace bad {
 
 	Rect TextureFrames::GetFrameRect(unsigned int frame) {
 
-		if (frame >= m_startFrame) {
+		if (frame >= m_totalFrames) {
 			std::cerr << "Texture Frames frame is out of bounds" << std::endl;
 			frame = 0;
 		}

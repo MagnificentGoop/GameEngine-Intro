@@ -174,10 +174,10 @@ namespace bad
 
         SDL_FRect destRect;
         destRect.w = source.w * scale.x;
-        destRect.h = source.y * scale.y;
+        destRect.h = source.h * scale.y;
 
         destRect.x = x - (destRect.w * 0.5f);
-        destRect.y = y - (destRect.w * 0.5f);
+        destRect.y = y - (destRect.h * 0.5f);
 
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, &sourceRect, &destRect, angle, NULL, flipH ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
