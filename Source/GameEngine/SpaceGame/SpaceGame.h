@@ -15,9 +15,6 @@ public:
 		GameOver
 	};
 
-	SpaceGame() = default;
-	SpaceGame(bad::Scene* scene) : Game(scene) {};
-
 	bool Initialize() override;
 	void Update() override;
 	void Draw() const override;

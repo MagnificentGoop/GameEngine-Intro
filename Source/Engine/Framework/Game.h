@@ -1,9 +1,11 @@
 #pragma once
+#include <memory>
+
 namespace bad {
 	class Game {
 	public:
 		Game() = default;
-		Game(class Scene* scene) { m_scene = scene; }
+		virtual ~Game();
 
 		virtual bool Initialize() { return true; }
 		virtual void Shutdown() {};
@@ -11,9 +13,9 @@ namespace bad {
 		virtual void Update();
 		virtual void Draw() const;
 
-		void SetScene(class Scene* scene) { m_scene = scene; }
+		void SetScene(std::unique_ptr<class Scene> scene);
 
 	protected:
-		class Scene* m_scene = nullptr;
+		std::unique_ptr<class Scene> m_scene = nullptr;
 	};
 }

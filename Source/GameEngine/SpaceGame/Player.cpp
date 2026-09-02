@@ -3,7 +3,6 @@
 #include "Engine.h"
 #include "Math/MathUtils.h"
 #include "Bomb.h"
-#include "Assets.h"
 #include "SpaceGame.h"
 #include "Components/Box2DPhysicsComponent.h"
 

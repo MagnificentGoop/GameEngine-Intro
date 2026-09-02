@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "SpaceGame/SpaceGame.h"
+#include "SpriteGame/SpriteGame.h"
 #include "Framework/Actor.h"
 //unique pointer game = make unique <previous game>()
 
@@ -8,7 +8,7 @@ int main()
     //INITIALIZATION/*
     if (!bad::Engine::Get().Initialize()) return 1;
     {
-        std::unique_ptr<bad::Game> game = std::make_unique<SpaceGame>();
+        std::unique_ptr<bad::Game> game = std::make_unique<SpriteGame>();
         game->Initialize();
 
         //INITIALIZATION*/

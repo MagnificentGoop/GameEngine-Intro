@@ -8,8 +8,7 @@
 bool SpriteGame::Initialize()
 {
     Game::Initialize();
-
-    m_scene = new bad::Scene();
+    SetScene(std::make_unique<bad::Scene>());
     m_scene->SetGame(this);
     m_scene->Load("Assets/SpriteGame/Scenes/scene.json");
 

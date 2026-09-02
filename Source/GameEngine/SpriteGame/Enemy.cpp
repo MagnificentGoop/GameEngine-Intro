@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "Engine.h"
-#include "SpaceGame.h"
+#include "SpriteGame.h"
 #include "Components/PhysicsComponent.h"
 
 FACTORY_REGISTER(Enemy)
@@ -37,7 +37,7 @@ void Enemy::OnCollision(bad::Actor* other)
             SetDestroyed();
             other->SetDestroyed(); 
 
-            ((SpaceGame*)m_scene->GetGame())->AddPoints(100);
+            ((SpriteGame*)m_scene->GetGame())->AddPoints(100);
 
             for (int i = 0; i < 50; i++)
             {

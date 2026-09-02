@@ -3,8 +3,7 @@
 #include "Engine.h"
 #include "Math/MathUtils.h"
 #include "Bomb.h"
-#include "Assets.h"
-#include "SpaceGame.h"
+#include "SpriteGame.h"
 #include "Components/Box2DPhysicsComponent.h"
 
 FACTORY_REGISTER(Player)
@@ -61,7 +60,7 @@ void Player::OnCollision(bad::Actor* other)
             bad::g_audio.PlaySound("scream");
             SetDestroyed();
             other->SetDestroyed(); 
-            ((SpaceGame*)m_scene->GetGame())->OnPlayerDead();
+            ((SpriteGame*)m_scene->GetGame())->OnPlayerDead();
         }
     }
 }

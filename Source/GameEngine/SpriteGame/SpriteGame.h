@@ -16,7 +16,6 @@ public:
 	};
 
 	SpriteGame() = default;
-	SpriteGame(bad::Scene* scene) : Game(scene) {};
 
 	bool Initialize() override;
 	void Update() override;

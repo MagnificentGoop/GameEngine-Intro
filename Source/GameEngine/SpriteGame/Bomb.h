@@ -1,7 +1,5 @@
 #pragma once
 #include "Engine.h"
-#include "Assets.h"
-#include "SpaceGame.h"
 #include "Bullet.h"
 
 struct BombDesc {
