@@ -35,7 +35,9 @@ namespace bad {
 	void SpriteRendererComponent::Read(const json::value_t& value) {
 		RendererComponent::Read(value);
 
-		JSON_READ_NAME_REQ(value, "texture", m_textureName);
+		if (!JSON_READ_NAME_REQ(value, "texture", m_textureName)) {
+			std::cerr << GetOwner()->GetName() << std::endl;
+		}
 		JSON_READ_NAME(value, "flip_h", m_flipH);
 	}
 }

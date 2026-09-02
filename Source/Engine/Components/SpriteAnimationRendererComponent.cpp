@@ -50,11 +50,10 @@ namespace bad {
 	}
 
 	void SpriteAnimationRendererComponent::Read(const json::value_t& value) {
-		SpriteRendererComponent::Read(value);
+		RendererComponent::Read(value);
 
 		JSON_READ_NAME(value, "frames_per_second", m_framesPerSecond);
 		JSON_READ_NAME_REQ(value, "loop", m_loop);
-
 		JSON_READ_NAME_REQ(value, "texture_frames", m_textureFramesName);
 	}
 }

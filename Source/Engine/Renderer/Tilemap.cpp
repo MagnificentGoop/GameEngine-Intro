@@ -43,7 +43,7 @@ namespace bad {
 						{
 							// read texture name value (texture name)
 							std::string value;
-							JSON_READ(propertyValue, value);
+							JSON_READ_NAME(propertyValue, "value", value);
 
 							layer.texture = Resources().Get<Texture>(value, renderer);
 							if (!layer.texture)
@@ -61,6 +61,8 @@ namespace bad {
 				m_layers.push_back(layer);
 			}
 		}
+
+		return true;
 	}
 
 	Rect Tilemap::GetTileRect(const Layer& layer, int tileID){
@@ -74,5 +76,11 @@ namespace bad {
 
 
 		return Rect(column * m_tileWidth, row * m_tileHeight, m_tileWidth, m_tileHeight);
+	}
+	Vector2<float> Tilemap::GetTilePosition(const Layer& layer, int tileIndex)
+	{
+		int column = tileIndex % layer.width;
+		int row = tileIndex / layer.width;
+		return Vector2{ (float)(column * m_tileWidth), (float)(row * m_tileHeight) };
 	}
 }

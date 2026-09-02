@@ -29,7 +29,7 @@
           "angular_damping": 10,
           "size": [ 20, 20 ],
           "gravity_scale": 0,
-          "is_sensor": true
+          "is_sensor": false
         }
       ]
     },
@@ -50,10 +50,6 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/SpriteGame/Images/Enemy.png"
-        },
-        {
-          "type": "CircleColliderComponent",
-          "radius": 64
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -84,10 +80,6 @@
           "texture": "Assets/SpriteGame/Images/Bullet.png"
         },
         {
-          "type": "CircleColliderComponent",
-          "radius": 64
-        },
-        {
           "type": "Box2DPhysicsComponent",
           "mass": 10,
           "linear_damping": 0,
@@ -115,10 +107,6 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/SpriteGame/Images/Shrapnel.png"
-        },
-        {
-          "type": "CircleColliderComponent",
-          "radius": 64
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -164,13 +152,21 @@
       "transform": {
         "position": [ 0,0 ],
         "rotation": 0,
-        "scale": [ 1, 1 ]
+        "scale": [ 3, 3 ]
       },
       "components": [
         {
           "type": "TilemapLoaderComponent",
           "tilemap_name": "Assets\\SpriteGame\\Tilemaps\\world.json"
-
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "mass": 1000000,
+          "linear_damping": 1000,
+          "angular_damping": 1000,
+          "size": [ 1, 1 ],
+          "gravity_scale": 0,
+          "is_sensor": false
         }
       ]
     }
