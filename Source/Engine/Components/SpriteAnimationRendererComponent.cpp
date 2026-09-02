@@ -32,11 +32,6 @@ namespace bad {
 			m_frameTimer -= frameTime;
 		}
 
-		std::cout
-			<< "Frame: " << m_frame
-			<< " / " << m_textureFrames->GetTotalFrames()
-			<< std::endl;
-
 		m_sourceRect = m_textureFrames->GetFrameRect(m_frame);
 	}
 
