@@ -134,8 +134,9 @@
     {
       "type": "Actor",
       "prototype": false,
+      "persistent": true,
       "name": "Bat",
-      "tags": [ "enemy" ],
+      "tags": [ "enemy", "Death" ],
       "active": true,
       "speed": 120,
       "transform": {
@@ -149,6 +150,27 @@
           "texture_frames": "Assets/SpriteGame/Animations/bat_idle.json",
           "frames_per_second": 10,
           "loop": true
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "prototype": false,
+      "persistent": true,
+      "name": "Tilemap",
+      "tags": [ "ground" ],
+      "active": true,
+      "speed": 0,
+      "transform": {
+        "position": [ 0,0 ],
+        "rotation": 0,
+        "scale": [ 1, 1 ]
+      },
+      "components": [
+        {
+          "type": "TilemapLoaderComponent",
+          "tilemap_name": "Assets\\SpriteGame\\Tilemaps\\world.json"
+
         }
       ]
     }

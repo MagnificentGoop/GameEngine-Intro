@@ -36,7 +36,7 @@
                 {
                  "name":"texture_name",
                  "type":"string",
-                 "value":"Assets\\Images\\tilemap.png"
+                 "value":"Assets\\SpriteGame\\Images\\tilemap.png"
                 }],
          "type":"tilelayer",
          "visible":true,

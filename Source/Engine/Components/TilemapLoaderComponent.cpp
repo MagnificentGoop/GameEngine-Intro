@@ -15,6 +15,7 @@ namespace bad {
 	void bad::TilemapLoaderComponent::Start(){
 		m_tilemap = Resources().Get<Tilemap>(m_tilemapName, Engine::Get().GetRenderer());
 	}
+
 	void TilemapLoaderComponent::Draw(const Renderer& renderer) const{
 		
 	}

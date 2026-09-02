@@ -185,6 +185,11 @@
     <ClInclude Include="SpriteGame\Player.h" />
     <ClInclude Include="SpriteGame\SpriteGame.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Build\Assets\SpriteGame\Animations\bat_idle.json" />
+    <None Include="..\..\Build\Assets\SpriteGame\Scenes\scene.json" />
+    <None Include="..\..\Build\Assets\SpriteGame\Tilemaps\world.json" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
