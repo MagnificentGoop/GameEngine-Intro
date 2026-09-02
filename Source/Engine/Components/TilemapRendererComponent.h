@@ -3,12 +3,12 @@
 #include "Physics/PhysicsBody.h"
 
 namespace bad {
-	class TilemapLoaderComponent : public RendererComponent {
+	class TilemapRendererComponent : public RendererComponent {
 	public:
-		CLASS_PROTOTYPE(TilemapLoaderComponent);
+		CLASS_PROTOTYPE(TilemapRendererComponent);
 
-		TilemapLoaderComponent() {};
-		TilemapLoaderComponent(const TilemapLoaderComponent& other);
+		TilemapRendererComponent() {};
+		TilemapRendererComponent(const TilemapRendererComponent& other);
 
 		void Start() override;
 		void Draw(const Renderer& renderer) const override;

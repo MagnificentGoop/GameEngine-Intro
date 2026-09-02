@@ -27,7 +27,7 @@
     <ClCompile Include="Components\RigidBodyPhysicsComponent.cpp" />
     <ClCompile Include="Components\SpriteAnimationRendererComponent.cpp" />
     <ClCompile Include="Components\SpriteRendererComponent.cpp" />
-    <ClCompile Include="Components\TilemapLoaderComponent.cpp" />
+    <ClCompile Include="Components\TilemapRendererComponent.cpp" />
     <ClCompile Include="Core\File.cpp" />
     <ClCompile Include="Core\Gametime.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -61,7 +61,7 @@
     <ClInclude Include="Components\RigidBodyPhysicsComponent.h" />
     <ClInclude Include="Components\SpriteAnimationRendererComponent.h" />
     <ClInclude Include="Components\SpriteRendererComponent.h" />
-    <ClInclude Include="Components\TilemapLoaderComponent.h" />
+    <ClInclude Include="Components\TilemapRendererComponent.h" />
     <ClInclude Include="Core\Factory.h" />
     <ClInclude Include="Core\File.h" />
     <ClInclude Include="Core\Gametime.h" />

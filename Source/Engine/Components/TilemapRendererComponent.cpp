@@ -1,18 +1,18 @@
 #include "pch.h"
-#include "TilemapLoaderComponent.h"
+#include "TilemapRendererComponent.h"
 #include "Core/Factory.h"
 #include "Engine.h"
 #include "Renderer/Tilemap.h"
 #include "Resources/ResourceManager.h"
 
 namespace bad {
-	FACTORY_REGISTER(TilemapLoaderComponent);
+	FACTORY_REGISTER(TilemapRendererComponent);
 
-	TilemapLoaderComponent::TilemapLoaderComponent(const TilemapLoaderComponent& other){
-		m_tilemap = other.m_tilemap;
+	TilemapRendererComponent::TilemapRendererComponent(const TilemapRendererComponent& other){
+		m_tilemapName = other.m_tilemapName;
 	}
 
-	void bad::TilemapLoaderComponent::Start(){
+	void bad::TilemapRendererComponent::Start(){
 		m_tilemap = Resources().Get<Tilemap>(m_tilemapName, Engine::Get().GetRenderer());
 
 		if (!m_tilemap) {
@@ -56,7 +56,7 @@ namespace bad {
 		}
 	}
 
-	void TilemapLoaderComponent::Draw(const Renderer& renderer) const{
+	void TilemapRendererComponent::Draw(const Renderer& renderer) const{
 		if (!m_tilemap) {
 			std::cerr << "Could not load tilename " << m_tilemapName << std::endl;
 			return;
@@ -85,7 +85,7 @@ namespace bad {
 		}
 	}
 
-	void TilemapLoaderComponent::Read(const json::value_t& value){
+	void TilemapRendererComponent::Read(const json::value_t& value){
 		RendererComponent::Read(value);
 
 		JSON_READ_NAME_REQ(value, "tilemap_name", m_tilemapName);

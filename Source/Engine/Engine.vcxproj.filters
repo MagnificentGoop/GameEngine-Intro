@@ -118,7 +118,7 @@
     <ClCompile Include="Renderer\Tilemap.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Components\TilemapLoaderComponent.cpp">
+    <ClCompile Include="Components\TilemapRendererComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -257,7 +257,7 @@
     <ClInclude Include="Renderer\Tilemap.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Components\TilemapLoaderComponent.h">
+    <ClInclude Include="Components\TilemapRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
