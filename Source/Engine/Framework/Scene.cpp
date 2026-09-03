@@ -71,7 +71,7 @@ namespace bad {
 
 		for (auto& actor : m_actors)
 		{
-			if (actor->m_destroyed) actor->OnDestroy();
+			if (actor->GetDestroyed()) actor->OnDestroy();
 		}
 
 		std::erase_if(m_actors, [](auto& actor) {return actor->GetDestroyed(); });

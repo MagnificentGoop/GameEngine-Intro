@@ -9,7 +9,7 @@ namespace bad {
 	FACTORY_REGISTER(TilemapRendererComponent);
 
 	TilemapRendererComponent::TilemapRendererComponent(const TilemapRendererComponent& other){
-		m_tilemapName = other.m_tilemapName;
+		m_tilemapName = other.m_tilemapName; 
 	}
 
 	void bad::TilemapRendererComponent::Start(){
